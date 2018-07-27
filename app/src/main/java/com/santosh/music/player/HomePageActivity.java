@@ -21,7 +21,7 @@ public class HomePageActivity extends AppCompatActivity {
     private ListView listViewArtists;
     private ListView listViewTracks;
 
-    private ArrayList<String> songsList;
+    private ArrayList<Music> songsList;
     private ArrayList<String> artistList;
     private ArrayList<String> albumsList;
 
@@ -43,6 +43,9 @@ public class HomePageActivity extends AppCompatActivity {
         addArtists();
         addAlbums();
         setClicksDefault();
+
+        //Create an ArrayList of Music Objects;
+        ArrayList<Music> songsList = new ArrayList<>();
     }
 
     public void referenceToIDs() {
@@ -56,30 +59,68 @@ public class HomePageActivity extends AppCompatActivity {
 
     private void addSongs() {
         songsList = new ArrayList<>();
-        songsList.add("Track/Song Name ONE - www.Website.com");
-        songsList.add("Track/Song Name TWO - www.Website.com");
-        songsList.add("Track/Song Name THREE - www.Website.com");
-        songsList.add("Track/Song Name FOUR - www.Website.com");
-        songsList.add("Track/Song Name FIVE - www.Website.com");
-        songsList.add("Track/Song Name SIX - www.Website.com");
-        songsList.add("Track/Song Name SEVEN - www.Website.com");
-        songsList.add("Track/Song Name EIGHT - www.Website.com");
-        songsList.add("Track/Song Name NINE - www.Website.com");
-        songsList.add("Track/Song Name TEN - www.Website.com");
+        songsList.add(new Music("Aaj Mood Ishqholiq Hai - www.PagalWorld.com"));
+        songsList.add(new Music("Along The Coast - www.BossMp3.IN"));
+        songsList.add(new Music("Bandook - www.SongsCloud.IN"));
+        songsList.add(new Music("Beautiful Feat. Colby Odonis - www.WapKing.FM"));
+        songsList.add(new Music("Begar Jhore Nai Aaboo (Toore) - www.JharkhandWap.IN"));
+        songsList.add(new Music("Better Than Revenge - www.RaagJatt.Com"));
+        songsList.add(new Music("Blame Feat The Newman - www.FazMusic.Net"));
+        songsList.add(new Music("Chaand Lakhe Rupa Gori - www.Fun2Desi.com"));
+        songsList.add(new Music("Chicken Song - www.SongsPK.Link"));
+        songsList.add(new Music("Dil Jala Raat Hua - www.NaGpuriMp3.In"));
+        songsList.add(new Music("Down To Earth - www.SongsLover.Info"));
+        songsList.add(new Music("Enchanted - www.WebMusic.IN"));
+        songsList.add(new Music("Eraser - www.SongsLover.Info"));
+        songsList.add(new Music("Favourite Girl - www.9xTune.com"));
+        songsList.add(new Music("Gaddi Ft. Veer Karan - Rob C - www.Mr-Punjab.Com"));
+        songsList.add(new Music("Gora Gora Badan Re Goriya - www.NaGpuriMp3.IN"));
+        songsList.add(new Music("Ishq Achcha Lagta Hai - www.DJMaza.Info"));
+        songsList.add(new Music("Hey Ma Feat. Camila Cabello - www.RaagTune.com"));
+        songsList.add(new Music("I Wanna Go - www.RaagJatt.Com"));
+        songsList.add(new Music("Jab Toy Dekhle Ulait - www.Fun2Desi.com"));
+        songsList.add(new Music("Jaanta Tha - www.MyMp3Singer.com"));
+        songsList.add(new Music("Koi Chehra - www.RaagJatt.com"));
+        songsList.add(new Music("Let Me Love You Feat. Justin Bieber - www.DJMaza.Info"));
+        songsList.add(new Music("Love You Like Love Song - www.WebMusic.In"));
+        songsList.add(new Music("Mere Lamhon Ki Aarzoo - www.WebMusic.In"));
+        songsList.add(new Music("Naina Se Lor Bahela (DJ Remix By Guru) - www.NagpuriWap.IN"));
+        songsList.add(new Music("One Dance Ft. Justin Bieber - www.9xTune.com"));
+        songsList.add(new Music("Pal Pal Dil Ke Paas - www.Songs.Pk"));
+        songsList.add(new Music("Saanson Ke - www.MyMp3Songs.Info"));
+        songsList.add(new Music("See You Again Ft. Charlie Puth - wwww.RiskyjaTT.CoM"));
+        songsList.add(new Music("Something New Feat. Chris Brown - www.Howwe.Biz"));
+        songsList.add(new Music("Swag Babe Ft. Millind Gaba - wwww.PagalWorld.com"));
+        songsList.add(new Music("Thanda Thanda Cool Cool (Dance Mix By DJ Chandan) - www.DjOnly.IN"));
+        songsList.add(new Music("Tore Se Pyaar - www.SadriMasti.IN"));
+        songsList.add(new Music("Yeah Ft. Lil Jon and Ludacris - www.SongsLover.Info"));
+        songsList.add(new Music("Zindagi Gulzar Hai - www.PakHeaven.Com"));
+        songsList.add(new Music("Zindegi (Unplugged) - www.Fun2Desi.com"));
     }
 
     public void addArtists() {
         artistList = new ArrayList<>();
-        artistList.add("Artist Name FIRST");
-        artistList.add("Artist Name SECOND");
-        artistList.add("Artist Name THIRD");
-        artistList.add("Artist Name FOURTH");
-        artistList.add("Artist Name FIFTH");
-        artistList.add("Artist Name SIXTH");
-        artistList.add("Artist Name SEVENTH");
-        artistList.add("Artist Name EIGHTH");
-        artistList.add("Artist Name NINTH");
-        artistList.add("Artist Name TENTH");
+        artistList.add("Akon");
+        artistList.add("Arash");
+        artistList.add("Big Sean");
+        artistList.add("B.L.U.E.");
+        artistList.add("BossMp3.IN");
+        artistList.add("Britney Spears");
+        artistList.add("Bryan Adam");
+        artistList.add("Charlie Puth");
+        artistList.add("David Correy");
+        artistList.add("D.J. Snake");
+        artistList.add("Ed Sheeran");
+        artistList.add("Eric Bellinger");
+        artistList.add("Fifth Harmony");
+        artistList.add("Jessie J");
+        artistList.add("Justin Bieber");
+        artistList.add("Kesha");
+        artistList.add("Meghan Trainor");
+        artistList.add("One Direction");
+        artistList.add("Selena Gomez & The Scene");
+        artistList.add("Snoop Dogg");
+        artistList.add("Tailor Swift");
     }
 
     public void addAlbums() {
@@ -97,7 +138,7 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void setClicksDefault() {
-        ArrayAdapter<String> songsArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, songsList);
+        MusicAdapter songsArrayAdapter = new MusicAdapter(this, songsList);
         listViewTracks.setAdapter(songsArrayAdapter);
 
         ArrayAdapter<String> artistsArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artistList);
@@ -147,9 +188,9 @@ public class HomePageActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 intent = new Intent(HomePageActivity.this, NowPlayingActivity.class);
                 bundle = new Bundle();
-                intent.putExtra(NOW_PLAYING_TRACK, songsList.get(position));
+                //intent.putExtra(NOW_PLAYING_TRACK, songsList.get(position));
                 intent.putExtra(INDEX, position);
-                bundle.putStringArrayList(BUNDLE_OF_SONGS, songsList);
+                //bundle.putStringArrayList(BUNDLE_OF_SONGS, songsList);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

@@ -28,7 +28,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-        <activity android:name=".ArtistDetailsActivity"/>
+        <activity
+            android:name=".ArtistDetailsActivity"
+            android:theme="@style/FullScreenTheme"/>
     </application>
 
 </manifest>

@@ -10,33 +10,34 @@
         android:id="@+id/id_anp_album_art"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
+        android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
+        app:srcCompat="@drawable/album_art"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/id_anp_track"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:ellipsize="marquee"
-        android:fadingEdge="none"
         android:gravity="center"
         android:marqueeRepeatLimit="marquee_forever"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="12dp"
         android:singleLine="true"
         android:text="Sugar - Maroon 5 (128Kbps) - www.DJMaza.Info"
         android:textColor="?attr/colorPrimaryDark"
@@ -50,12 +51,14 @@
         android:id="@+id/id_anp_artist_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
         android:ellipsize="end"
         android:gravity="center"
         android:marqueeRepeatLimit="marquee_forever"
-        android:paddingBottom="12dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
         android:singleLine="true"
         android:text="Maroon 5 | Best Of Maroon 5 Single"
         android:textColor="?attr/colorPrimary"
@@ -86,24 +89,29 @@
             android:id="@+id/id_anp_time_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:textColor="?attr/colorPrimaryDark"
-            android:text="05:50" />
+            android:text="05:50"
+            android:textColor="?attr/colorPrimaryDark" />
 
         <ProgressBar
             android:id="@+id/id_anp_progress_bar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
             android:layout_below="@id/id_anp_time_skipped"
-            android:layout_centerHorizontal="true" />
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            tools:targetApi="lollipop" />
     </RelativeLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         android:paddingEnd="24dp"
         android:paddingLeft="24dp"
@@ -114,56 +122,62 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <ImageButton
+            android:id="@+id/id_anp_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_border_bkg_full"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/more_dots" />
+
+        <ImageButton
             android:id="@+id/id_anp_fav_heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_fav_heart_black"
+            android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp"
+            android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
-            android:background="@drawable/round_border_bkg_full"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/id_anp_more"
+            app:layout_constraintHorizontal_bias="0.738"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_action_fav_heart_black" />
 
         <ImageButton
             android:id="@+id/id_anp_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_share_black"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
+            android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
-            android:layout_marginRight="36dp"
-            android:layout_marginEnd="36dp"
-            android:background="@drawable/round_border_bkg_full"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/id_anp_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_dialog_dialer"
-            android:contentDescription="@string/app_name"
-            android:padding="8dp"
-            android:background="@drawable/round_border_bkg_full"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/id_anp_share"
-            app:layout_constraintStart_toEndOf="@id/id_anp_fav_heart"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toEndOf="@id/id_anp_more"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_action_share_black" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:paddingEnd="24dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingStart="24dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -173,34 +187,34 @@
             android:id="@+id/id_anp_shuffle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
             android:background="@drawable/round_border_bkg_full"
+            android:contentDescription="@string/app_name"
             android:padding="8dp"
-            app:srcCompat="@drawable/ic_action_shuffle_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_shuffle_black" />
 
         <ImageButton
             android:id="@+id/id_anp_repeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_repeat_black"
             android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_repeat_black" />
 
         <ImageButton
             android:id="@+id/id_anp_play_pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_pause_black"
+            android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="16dp"
-            android:background="@drawable/round_border_bkg_full"
+            android:src="@drawable/ic_action_pause_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -210,27 +224,29 @@
             android:id="@+id/id_anp_previous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_previous_black"
+            android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
-            android:background="@drawable/round_border_bkg_full"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/id_anp_play_pause"
+            app:layout_constraintHorizontal_bias="0.825"
             app:layout_constraintStart_toEndOf="@id/id_anp_shuffle"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_previous_black" />
 
         <ImageButton
             android:id="@+id/id_anp_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_action_next_black"
+            android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
-            android:background="@drawable/round_border_bkg_full"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/id_anp_repeat"
+            app:layout_constraintHorizontal_bias="0.175"
             app:layout_constraintStart_toEndOf="@id/id_anp_play_pause"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_action_next_black" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
