@@ -6,7 +6,7 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher_bm_logo_128"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -21,13 +21,7 @@
         </activity>
         <activity
             android:name=".NowPlayingActivity"
-            android:label="Now playing track"
-            android:parentActivityName=".HomePageActivity"
-            tools:targetApi="jelly_bean">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomePageActivity" />
-        </activity>
+            android:label="Now playing track" />
         <activity
             android:name=".ArtistDetailsActivity"
             android:theme="@style/FullScreenTheme"/>

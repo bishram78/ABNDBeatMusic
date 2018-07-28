@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:paddingBottom="12dp"
+    android:paddingBottom="4dp"
     android:paddingEnd="24dp"
     android:paddingLeft="24dp"
     android:paddingRight="24dp"
     android:paddingStart="24dp"
-    android:paddingTop="12dp"
+    android:paddingTop="4dp"
     android:gravity="center_vertical">
 
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/album_art" />
+        android:src="@drawable/album_art_bm_square_black_text" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             tools:text="Be Alright (Ariana Grande) - 320Kbps - (BossMp3.Me)" />
 
         <TextView
@@ -43,7 +43,7 @@
             tools:text="04:35" />
 
         <TextView
-            android:id="@+id/id_mli_artist"
+            android:id="@+id/id_mli_artist_album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

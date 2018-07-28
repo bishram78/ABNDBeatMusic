@@ -38,16 +38,16 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         super(context, 0, musics);
     }
 
-    @NonNull
-    /*
+    /**
      * Provides a view for an AdapterView (ListView, GridView, etc.)
      *
      * @param position  The AdapterView position that is requesting a view
      * @param convertView The recycled view to populate.
      *                  (Search online for "android view recycling" to learn more)
      * @param parent    The parent ViewGroup that is used for inflation
-     * @param return    The View for the position in the AdapterView.
+     * return    The View for the position in the AdapterView.
      */
+    @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //Check if the existing view is being reused, otherwise inflate the view
@@ -56,14 +56,22 @@ public class MusicAdapter extends ArrayAdapter<Music> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.music_list_item, parent, false);
         }
 
-        // Get the {@link Music} boject located at this position in the list
+        // Get the {@link Music} object located at this position in the list
         Music currentMusic = getItem(position);
 
-        // Find the TextView in the music_list_item.xml layout with the ID id_mli_title
+        // Find the TextViews in the music_list_item.xml layout with the IDs id_mli_title,
+        // id_mli_artist_album and id_mli_duration
         TextView textViewTitle = listItemView.findViewById(R.id.id_mli_title);
+        TextView textViewArtistAlbum = listItemView.findViewById(R.id.id_mli_artist_album);
+        TextView textViewDuration = listItemView.findViewById(R.id.id_mli_duration);
 
-        // Get the Title from the current Music object and set the text on the Title's textView
+        assert currentMusic != null;
+        // Get the Title, Artist, Album and Duration from the current Music object and set the text
+        // on the respective textViews
         textViewTitle.setText(currentMusic.getSongTitle());
+        String artist_album = currentMusic.getSongArtist() + currentMusic.getSongAlbum();
+        textViewArtistAlbum.setText(artist_album);
+        textViewDuration.setText(currentMusic.getSongDuration());
         return listItemView;
     }
 }

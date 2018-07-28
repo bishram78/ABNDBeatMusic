@@ -23,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/album_art"
+        app:srcCompat="@drawable/album_art_bm_square_black_text_360"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView

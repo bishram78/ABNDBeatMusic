@@ -15,20 +15,20 @@ public class Music {
     private String mSongTitle;
 
     /* A private field that holds the ARTIST_NAME of the app */
-    //private String mSongArtist;
+    private String mSongArtist;
 
     /* A private field that holds the ALBUM_NAME of the app */
-    //private String mSongAlbum;
+    private String mSongAlbum;
 
     /** A private field that holds the DURATION_OF_SONG */
-    //private String mSongDuration;
+    private String mSongDuration;
 
     // The constructor of the class (necessary)
-    public Music(String songTitle) {
+    public Music(String songTitle, String songArtist, String songAlbum, String songDuration) {
         mSongTitle = songTitle;
-        //mSongArtist = songArtist;
-        //mSongAlbum = songAlbum;
-        //mSongDuration = songDuration;
+        mSongArtist = songArtist;
+        mSongAlbum = songAlbum;
+        mSongDuration = songDuration;
     }
 
     /** GET THE TITLE OF THE SONG */
@@ -36,18 +36,18 @@ public class Music {
         return mSongTitle;
     }
 
-    /** GET THE ARTIST META DATA OF THE SONG
+    /** GET THE ARTIST META DATA OF THE SONG */
     public String getSongArtist() {
         return mSongArtist;
     }
 
-    /** GET THE ALBUM META DATA OF THE SONG
+    /** GET THE ALBUM META DATA OF THE SONG */
     public String getSongAlbum() {
         return mSongAlbum;
     }
 
-    /** GET THE DURATION META DATA OF THE APP
+    /** GET THE DURATION META DATA OF THE APP */
     public String getSongDuration() {
         return mSongDuration;
-    } */
+    }
 }
