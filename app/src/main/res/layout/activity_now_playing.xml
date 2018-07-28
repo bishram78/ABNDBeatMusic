@@ -65,7 +65,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="end"
+            android:ellipsize="end"
+            android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             tools:text="Artist name" />
 
@@ -113,8 +115,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="05:50"
-            android:textColor="?attr/colorPrimaryDark" />
+            tools:text="05:50"
+            android:textColor="?attr/colorPrimaryDark"
+            tools:ignore="RelativeOverlap" />
 
         <ProgressBar
             android:id="@+id/id_anp_progress_bar"
@@ -125,6 +128,7 @@
             android:layout_centerHorizontal="true"
             android:indeterminate="true"
             android:indeterminateTint="@color/colorPrimaryDark"
+            android:indeterminateTintMode="src_over"
             tools:targetApi="lollipop" />
     </RelativeLayout>
 

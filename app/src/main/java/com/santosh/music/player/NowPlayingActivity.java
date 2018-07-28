@@ -72,11 +72,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         TextView textViewAlbum = findViewById(R.id.id_anp_album);
         textViewNowPlayingTrack.setText(getIntent().getStringExtra(NOW_PLAYING_TRACK));
         textViewArtist.setText(getIntent().getStringExtra(ARTIST_NAME));
-        Animation animationToRight = new TranslateAnimation(-400,400, 0, 0);
-        animationToRight.setDuration(12000);
-        animationToRight.setRepeatMode(Animation.RESTART);
-        animationToRight.setRepeatCount(Animation.INFINITE);
-        textViewArtist.setAnimation(animationToRight);
+        textViewArtist.setSelected(true);
         textViewAlbum.setText(getIntent().getStringExtra(ALBUM_NAME));
         textViewAlbum.setSelected(true);
         new Handler().postDelayed(new Runnable() {

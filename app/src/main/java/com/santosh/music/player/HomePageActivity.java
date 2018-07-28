@@ -28,11 +28,10 @@ public class HomePageActivity extends AppCompatActivity {
     private Bundle bundle;
     private Intent intent;
 
+    private static final String NOW_PLAYING_TRACK = "now_playing_track";
     private static final String ARTIST_NAME = "artist_name";
     private static final String ALBUM_NAME = "album_name";
-    private static final String BUNDLE_OF_SONGS = "bundle_of_songs";
     private static final String INDEX = "index";
-    private static final String NOW_PLAYING_TRACK = "now_playing_track";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +98,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     public void addArtists() {
         artistList = new ArrayList<>();
+        artistList.add(songsList.get(0).getSongArtist());
         artistList.add("Akon");
         artistList.add("Arash");
         artistList.add("Big Sean");
@@ -198,7 +198,6 @@ public class HomePageActivity extends AppCompatActivity {
                 intent.putExtra(ARTIST_NAME, songsList.get(position).getSongArtist());
                 intent.putExtra(ALBUM_NAME, songsList.get(position).getSongAlbum());
                 intent.putExtra(INDEX, position);
-                //bundle.putStringArrayList(BUNDLE_OF_SONGS, songsList);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
