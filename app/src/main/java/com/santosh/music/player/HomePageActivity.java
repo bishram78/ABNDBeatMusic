@@ -28,9 +28,6 @@ public class HomePageActivity extends AppCompatActivity {
     private Bundle bundle;
     private Intent intent;
 
-    private static final String NOW_PLAYING_TRACK = "now_playing_track";
-    private static final String ARTIST_NAME = "artist_name";
-    private static final String ALBUM_NAME = "album_name";
     private static final String INDEX = "index";
 
     @Override
@@ -57,26 +54,26 @@ public class HomePageActivity extends AppCompatActivity {
     private void addSongs() {
         //Create an ArrayList of Music Objects;
         songsList = new ArrayList<>();
-        songsList.add(new Music("Aaj Mood Ishqholiq Hai - www.PagalWorld.com", "Sonakshi Sihna, Kadil Baag & Pritam Kapoor", "Single Bollywood Album Mp3 2016", "04:30"));
-        songsList.add(new Music("Along The Coast - www.BossMp3.IN", "Unknown Artist", "Unknown Album", "03:37"));
-        songsList.add(new Music("Bandook - www.SongsCloud.IN", "Unknown Artist", "Unknown Album", "05:49"));
-        songsList.add(new Music("Beautiful Feat. Colby Odonis - www.WapKing.FM", "Akon", "Akon Konvicted", "03:59"));
-        songsList.add(new Music("Begar Jhore Nai Aaboo (Toore) - www.JharkhandWap.IN", "DJ Sandeep", "Toore", "05:20"));
-        songsList.add(new Music("Better Than Revenge - www.RaagJatt.Com", "Taylor Swift", "Billboard Top 100", "03:46"));
-        songsList.add(new Music("Blame Feat The Newman - www.FazMusic.Net", "Kelvin Harris", "Billboard Top 100", "03:10"));
-        songsList.add(new Music("Chaand Lakhe Rupa Gori - www.Fun2Desi.com", "Pawan", "Adhunik Nagpuri", "06:20"));
-        songsList.add(new Music("Chicken Music - www.SongsPK.Link", "Mika Singh", "Bollywood Party", "05:02"));
-        songsList.add(new Music("Dil Jala Raat Hua - www.NaGpuriMp3.In", "Munna Dhamal", "Gaon Ker Gori", "06:39"));
-        songsList.add(new Music("Down To Earth - www.SongsLover.Info", "Justin Bieber", "My World 2.0", "03:54"));
-        songsList.add(new Music("Enchanted - www.WebMusic.IN", "Taylor Swift", "Enchanted", "04:00"));
-        songsList.add(new Music("Eraser - www.SongsLover.Info", "Unknown Artist", "Latest English Music", "03:27"));
-        songsList.add(new Music("Favourite Girl - www.9xTune.com", "Justin Bieber", "My World 2.0", "05:00"));
-        songsList.add(new Music("Gaddi Ft. Veer Karan - Rob C - www.Mr-Punjab.Com", "Rob C", "Meri Gaddi", "04:45"));
-        songsList.add(new Music("Gora Gora Badan Re Goriya - www.NaGpuriMp3.IN", "Munna Dhamal", "Gaon Ker Gori", "05:05"));
-        songsList.add(new Music("Ishq Achcha Lagta Hai - www.DJMaza.Info", "Unknown Artist", "Romantic Music", "04:40"));
-        songsList.add(new Music("Hey Ma Feat. Camila Cabello - www.RaagTune.com", "Camila Cabello", "More Power", "03:11"));
-        songsList.add(new Music("I Wanna Go - www.RaagJatt.Com", "Mey Mee", "Northern People", "03:56"));
-        songsList.add(new Music("Jab Toy Dekhle Ulait - www.Fun2Desi.com", "Raju & Monika", "Adhunik Nagpuri", "06:06"));
+        songsList.add(new Music("Song Title 01 - www.source.com", "Artist 01", "Album 01", "04:30"));
+        songsList.add(new Music("Song Title 02 - www.source.com", "Artist 02", "Album 02", "03:37"));
+        songsList.add(new Music("Song Title 03 - www.source.com", "Artist 03", "Album 03", "05:49"));
+        songsList.add(new Music("Song Title 04 - www.source.com", "Artist 04", "Album 04", "03:59"));
+        songsList.add(new Music("Song Title 05 - www.source.com", "Artist 05", "Album 05", "05:20"));
+        songsList.add(new Music("Song Title 06 - www.source.com", "Artist 06", "Album 06", "03:46"));
+        songsList.add(new Music("Song Title 07 - www.source.com", "Artist 07", "Album 07", "03:10"));
+        songsList.add(new Music("Song Title 08 - www.source.com", "Artist 08", "Album 08", "06:20"));
+        songsList.add(new Music("Song Title 09 - www.source.com", "Artist 09", "Album 09", "05:02"));
+        songsList.add(new Music("Song Title 10 - www.source.com", "Artist 10", "Album 10", "06:39"));
+        songsList.add(new Music("Song Title 11 - www.source.com", "Artist 11", "Album 12", "03:54"));
+        songsList.add(new Music("Song Title 12 - www.source.com", "Artist 12", "Album 12", "04:00"));
+        songsList.add(new Music("Song Title 13 - www.source.com", "Artist 13", "Album 13", "03:27"));
+        songsList.add(new Music("Song Title 14 - www.source.com", "Artist 14", "Album 14", "05:00"));
+        songsList.add(new Music("Song Title 15 - www.source.com", "Artist 15", "Album 15", "04:45"));
+        songsList.add(new Music("Song Title 16 - www.source.com", "Artist 16", "Album 16", "05:05"));
+        songsList.add(new Music("Song Title 17 - www.source.com", "Artist 17", "Album 17", "04:40"));
+        songsList.add(new Music("Song Title 18 - www.source.com", "Artist 18", "Album 18", "03:11"));
+        songsList.add(new Music("Song Title 19 - www.source.com", "Artist 19", "Album 19", "03:56"));
+        songsList.add(new Music("Song Title 20 - www.source.com", "Artist 20", "Album 20", "06:06"));
         songsList.add(new Music("Jaanta Tha - www.MyMp3Singer.com", "Kavita Krishnamurthy", "Masoom", "05:32"));
         songsList.add(new Music("Koi Chehra - www.RaagJatt.com", "Alda Kaur", "Koi Chehra", "05:19"));
         songsList.add(new Music("Let Me Love You Feat. Justin Bieber - www.DJMaza.Info", "DJ Snake", "Latest English", "04:48"));
