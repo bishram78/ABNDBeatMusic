@@ -69,7 +69,7 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         // Get the Title, Artist, Album and Duration from the current Music object and set the text
         // on the respective textViews
         textViewTitle.setText(currentMusic.getSongTitle());
-        String artist_album = currentMusic.getSongArtist() + currentMusic.getSongAlbum();
+        String artist_album = String.format("[%s] | [%s]", currentMusic.getSongArtist(), currentMusic.getSongAlbum());
         textViewArtistAlbum.setText(artist_album);
         textViewDuration.setText(currentMusic.getSongDuration());
         return listItemView;

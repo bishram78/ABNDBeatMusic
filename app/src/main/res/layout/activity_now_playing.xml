@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_anp_album_art" />
 
-    <TextView
+    <LinearLayout
         android:id="@+id/id_anp_artist_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,15 +56,37 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginStart="24dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:singleLine="true"
-        android:text="Maroon 5 | Best Of Maroon 5 Single"
-        android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_anp_track" />
+        app:layout_constraintTop_toBottomOf="@+id/id_anp_track">
+
+        <TextView
+            android:id="@+id/id_anp_artist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:singleLine="true"
+            tools:text="Artist name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="|" />
+
+        <TextView
+            android:id="@+id/id_anp_album"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            tools:text="Album name" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -100,9 +122,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/id_anp_time_skipped"
-            android:indeterminateTint="@color/colorPrimaryDark"
             android:layout_centerHorizontal="true"
             android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
             tools:targetApi="lollipop" />
     </RelativeLayout>
 

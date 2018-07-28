@@ -6,11 +6,14 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
@@ -33,6 +36,8 @@ public class NowPlayingActivity extends AppCompatActivity {
     private String evenOrOdd = "EVEN";
 
     private static final String NOW_PLAYING_TRACK = "now_playing_track";
+    private static final String ARTIST_NAME = "artist_name";
+    private static final String ALBUM_NAME = "album_name";
     private static final String BUNDLE_OF_SONGS = "bundle_of_songs";
     private static final String INDEX = "index";
 
@@ -59,12 +64,21 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     private void setClicksDefault() {
         Intent intent = getIntent();
-        String nowPlayingTrack = intent.getStringExtra(NOW_PLAYING_TRACK);
         index = intent.getIntExtra(INDEX, 0);
         songsListReceived = intent.getStringArrayListExtra(BUNDLE_OF_SONGS);
 
         textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
-        textViewNowPlayingTrack.setText(nowPlayingTrack);
+        TextView textViewArtist = findViewById(R.id.id_anp_artist);
+        TextView textViewAlbum = findViewById(R.id.id_anp_album);
+        textViewNowPlayingTrack.setText(getIntent().getStringExtra(NOW_PLAYING_TRACK));
+        textViewArtist.setText(getIntent().getStringExtra(ARTIST_NAME));
+        Animation animationToRight = new TranslateAnimation(-400,400, 0, 0);
+        animationToRight.setDuration(12000);
+        animationToRight.setRepeatMode(Animation.RESTART);
+        animationToRight.setRepeatCount(Animation.INFINITE);
+        textViewArtist.setAnimation(animationToRight);
+        textViewAlbum.setText(getIntent().getStringExtra(ALBUM_NAME));
+        textViewAlbum.setSelected(true);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
