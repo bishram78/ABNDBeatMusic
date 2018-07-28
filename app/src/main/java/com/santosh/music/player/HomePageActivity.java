@@ -138,7 +138,14 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void setClicksDefault() {
+        // Create an {@link MusicAdapter}, whose data source is a list of {@link Music}
+        // The adapter knows how to create layout for each item in the list, using the
+        // simple_list_item_1.xml layout resource defined in the Android Framework.
+        // This list item layout contains a single {@link TextView}, which the adapter will set
+        // display a single Word.
         MusicAdapter songsArrayAdapter = new MusicAdapter(this, songsList);
+
+        // Attach the custom adapter to the ListView.
         listViewTracks.setAdapter(songsArrayAdapter);
 
         ArrayAdapter<String> artistsArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artistList);
