@@ -60,18 +60,24 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <ListView
+    <GridView
         android:id="@+id/id_ahp_list_4_artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="3"
         android:gravity="center"
+        android:horizontalSpacing="4dp"
+        android:numColumns="3"
+        android:padding="4dp"
+        android:verticalSpacing="4dp"
         android:visibility="gone" />
 
     <GridView
         android:id="@+id/id_ahp_grid_4_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="3"
+        android:horizontalSpacing="8dp"
+        android:numColumns="2"
+        android:padding="8dp"
+        android:verticalSpacing="8dp"
         android:visibility="gone" />
 </LinearLayout>

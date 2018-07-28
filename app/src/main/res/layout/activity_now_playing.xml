@@ -39,15 +39,15 @@
         android:gravity="center"
         android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
-        android:text="Sugar - Maroon 5 (128Kbps) - www.DJMaza.Info"
         android:textColor="?attr/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_anp_album_art" />
+        app:layout_constraintTop_toBottomOf="@+id/id_anp_album_art"
+        tools:text="Sugar - Maroon 5 (128Kbps) - www.DJMaza.Info" />
 
-    <LinearLayout
+    <TextView
         android:id="@+id/id_anp_artist_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,39 +56,14 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginStart="24dp"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_anp_track">
-
-        <TextView
-            android:id="@+id/id_anp_artist"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:ellipsize="end"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
-            tools:text="Artist name" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:text="|" />
-
-        <TextView
-            android:id="@+id/id_anp_album"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
-            tools:text="Album name" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/id_anp_track"
+        tools:text="Artist name | Album Name" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -115,9 +90,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            tools:text="05:50"
             android:textColor="?attr/colorPrimaryDark"
-            tools:ignore="RelativeOverlap" />
+            tools:ignore="RelativeOverlap"
+            tools:text="05:50" />
 
         <ProgressBar
             android:id="@+id/id_anp_progress_bar"

@@ -4,7 +4,7 @@ package com.santosh.music.player;
  * Created by BISHRAM MUNDA
  * Created on Friday 27/07/2018
  *
- * A custom ArrayAdapter (MusicAdapter) that is responsible for handling custom class with ListView;
+ * A custom ArrayAdapter (SongAdapter) that is responsible for handling custom class with ListView;
  */
 
 import android.content.Context;
@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MusicAdapter extends ArrayAdapter<Music> {
+public class SongAdapter extends ArrayAdapter<Music> {
 
     /**
      * This is our custom constructor (it doesn't mirror a superclass constructor).
@@ -26,16 +26,16 @@ public class MusicAdapter extends ArrayAdapter<Music> {
      * to populate into the lists.
      *
      * @param context   The current context. Used to inflate the layout file.
-     * @param musics    A list of Music objects to display in a list.
+     * @param music    A list of Music objects to display in a list.
      */
-    public MusicAdapter(Context context, ArrayList<Music> musics) {
+    public SongAdapter(Context context, ArrayList<Music> music) {
         /*
          * Here, we initialize the ArrayAdapter's internal storage for the context and the List.
          * the second argument is used when the ArrayAdapter is populating a single TextView.
          * Because this is a Custom Adapter for two TextViews, the adapter is no longer
          * going to use this second argument, so it can be any value. Here, we used 0;
          */
-        super(context, 0, musics);
+        super(context, 0, music);
     }
 
     /**
@@ -53,23 +53,23 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         //Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.music_list_item, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_4_song, parent, false);
         }
 
         // Get the {@link Music} object located at this position in the list
         Music currentMusic = getItem(position);
 
-        // Find the TextViews in the music_list_item.xml layout with the IDs id_mli_title,
+        // Find the TextViews in the list_item_4_song.xml layout with the IDs id_mli_title,
         // id_mli_artist_album and id_mli_duration
         TextView textViewTitle = listItemView.findViewById(R.id.id_mli_title);
         TextView textViewArtistAlbum = listItemView.findViewById(R.id.id_mli_artist_album);
         TextView textViewDuration = listItemView.findViewById(R.id.id_mli_duration);
 
         assert currentMusic != null;
-        // Get the Title, Artist, Album and Duration from the current Music object and set the text
+        // Get the Title, Artist, AlbumAdapter and Duration from the current Music object and set the text
         // on the respective textViews
         textViewTitle.setText(currentMusic.getSongTitle());
-        String artist_album = String.format("[%s] | [%s]", currentMusic.getSongArtist(), currentMusic.getSongAlbum());
+        String artist_album = String.format("%s | %s", currentMusic.getSongArtist(), currentMusic.getSongAlbum());
         textViewArtistAlbum.setText(artist_album);
         textViewDuration.setText(currentMusic.getSongDuration());
         return listItemView;

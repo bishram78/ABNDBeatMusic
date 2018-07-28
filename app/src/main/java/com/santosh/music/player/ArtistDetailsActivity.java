@@ -30,14 +30,14 @@ public class ArtistDetailsActivity extends AppCompatActivity {
         textViewArtistName.setText(artistName);
 
         final ArrayList<String> artistSongs = new ArrayList<>();
-        artistSongs.add("Track/Song Name ONE - www.Website.com");
-        artistSongs.add("Track/Song Name TWO - www.Website.com");
-        artistSongs.add("Track/Song Name THREE - www.Website.com");
-        artistSongs.add("Track/Song Name FOUR - www.Website.com");
-        artistSongs.add("Track/Song Name FIVE - www.Website.com");
-        artistSongs.add("Track/Song Name SIX - www.Website.com");
-        artistSongs.add("Track/Song Name SEVEN - www.Website.com");
-        artistSongs.add("Track/Song Name EIGHT - www.Website.com");
+        artistSongs.add("Track/Music Name ONE - www.Website.com");
+        artistSongs.add("Track/Music Name TWO - www.Website.com");
+        artistSongs.add("Track/Music Name THREE - www.Website.com");
+        artistSongs.add("Track/Music Name FOUR - www.Website.com");
+        artistSongs.add("Track/Music Name FIVE - www.Website.com");
+        artistSongs.add("Track/Music Name SIX - www.Website.com");
+        artistSongs.add("Track/Music Name SEVEN - www.Website.com");
+        artistSongs.add("Track/Music Name EIGHT - www.Website.com");
 
         ArrayAdapter<String> asArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artistSongs);
         ListView listViewArtistSongs = findViewById(R.id.id_aad_songs_list);

@@ -22,7 +22,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/album_art_bm_square_black_text_360"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:0.8"
+            app:layout_constraintDimensionRatio="1:0.3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,9 +30,9 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#770011ff"
+            android:background="#77000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:0.8"
+            app:layout_constraintDimensionRatio="1:0.3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +48,18 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="Name of artist" />
     </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/view_top"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/id_aad_artist_container" />
 
     <LinearLayout
         android:id="@+id/id_aad_info_container"
@@ -64,7 +74,7 @@
         android:paddingTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_aad_artist_container">
+        app:layout_constraintTop_toBottomOf="@+id/view_top">
 
         <TextView
             android:id="@+id/id_aad_no_albums_tracks"
@@ -72,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@android:color/black"
-            tools:text="45 Albums  |  92 Tracks" />
+            tools:text="45 Albums | 92 Tracks" />
 
         <ImageButton
             android:id="@+id/id_aad_play_all"
@@ -85,7 +95,7 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/view_bottom"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@android:color/darker_gray"
@@ -100,5 +110,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view" />
+        app:layout_constraintTop_toBottomOf="@id/view_bottom" />
 </android.support.constraint.ConstraintLayout>
