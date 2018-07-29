@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,11 +25,13 @@ public class HomePageActivity extends AppCompatActivity {
     private ArrayList<Album> albumsList;
 
     private static final String INDEX = "index";
-    private static final String NO_OF_SONG = "no_of_song";
+    private static final String NO_OF_ARTIST_SONG = "no_of_artist_song";
+    private static final String NO_OF_ALBUM_SONG = "no_of_album_song";
     private static final String ARTIST_NAME = "artist_name";
+    private static final String ALBUM_NAME = "album_name";
     private static final String TRACK_LIST = "track_list";
     private static final String ARTIST_LIST = "artist_list";
-    private static final String ALBUM_LIST = "album_name";
+    private static final String ALBUM_LIST = "album_list";
     private static final String DURATION_LIST = "duration_list";
 
     @Override
@@ -98,7 +99,7 @@ public class HomePageActivity extends AppCompatActivity {
         artistsList.add(new Artist("Rahat Fateh Ali Khan"));
         artistsList.add(new Artist("Rihana"));
         artistsList.add(new Artist("Usher"));
-        artistsList.add(new Artist("Unknown"));
+        artistsList.add(new Artist("Unknown Artist"));
     }
 
     public void sortedAlbums() {
@@ -112,7 +113,7 @@ public class HomePageActivity extends AppCompatActivity {
         albumsList.add(new Album("My World 2.0"));
         albumsList.add(new Album("Raid"));
         albumsList.add(new Album("Single Mp3"));
-        albumsList.add(new Album("Unknown"));
+        albumsList.add(new Album("Unknown Album"));
     }
 
     private void setClicksDefault() {
@@ -172,10 +173,12 @@ public class HomePageActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), String.valueOf(position) + String.valueOf(songsList.size()), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(HomePageActivity.this, NowPlayingActivity.class);
                 intent.putExtra(INDEX, position);
+
                 ArrayList<String> trackList = new ArrayList<>();
                 ArrayList<String> artistList = new ArrayList<>();
                 ArrayList<String> albumList = new ArrayList<>();
                 ArrayList<String> durationList = new ArrayList<>();
+
                 for (int i=0; i<songsList.size(); i++) {
                     trackList.add(songsList.get(i).getSongTitle());
                     artistList.add(songsList.get(i).getSongArtist());
@@ -197,12 +200,14 @@ public class HomePageActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(HomePageActivity.this, ArtistDetailsActivity.class);
                 intent.putExtra(INDEX, position);
-                intent.putExtra("ARTIST_NAME", artistsList.get(position).getSongArtist());
+                intent.putExtra(ARTIST_NAME, artistsList.get(position).getSongArtist());
+
                 ArrayList<String> trackList = new ArrayList<>();
                 ArrayList<String> artistList = new ArrayList<>();
                 ArrayList<String> albumList = new ArrayList<>();
                 ArrayList<String> durationList = new ArrayList<>();
                 int count = 0;
+
                 for (int i = 0; i < songsList.size(); i++) {
                     if (songsList.get(i).getSongArtist().equals(artistsList.get(position).getSongArtist())) {
                         trackList.add(songsList.get(i).getSongTitle());
@@ -218,7 +223,7 @@ public class HomePageActivity extends AppCompatActivity {
                 bundle.putStringArrayList(ALBUM_LIST, albumList);
                 bundle.putStringArrayList(DURATION_LIST, durationList);
                 intent.putExtras(bundle);
-                intent.putExtra("NO_OF_SONG", count);
+                intent.putExtra(NO_OF_ARTIST_SONG, count);
                 startActivity(intent);
             }
         });
@@ -227,6 +232,31 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(HomePageActivity.this, AlbumDetailsActivity.class);
+                intent.putExtra(INDEX, position);
+                intent.putExtra(ALBUM_NAME, albumsList.get(position).getSongAlbum());
+
+                ArrayList<String> trackList = new ArrayList<>();
+                ArrayList<String> artistList = new ArrayList<>();
+                ArrayList<String> albumList = new ArrayList<>();
+                ArrayList<String> durationList = new ArrayList<>();
+                int count = 0;
+
+                for (int i = 0; i < songsList.size(); i++) {
+                    if (songsList.get(i).getSongAlbum().equals(albumsList.get(position).getSongAlbum())) {
+                        trackList.add(songsList.get(i).getSongTitle());
+                        artistList.add(songsList.get(i).getSongArtist());
+                        albumList.add(songsList.get(i).getSongAlbum());
+                        durationList.add(songsList.get(i).getSongDuration());
+                        count++;
+                    }
+                }
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList(TRACK_LIST, trackList);
+                bundle.putStringArrayList(ARTIST_LIST, artistList);
+                bundle.putStringArrayList(ALBUM_LIST, albumList);
+                bundle.putStringArrayList(DURATION_LIST, durationList);
+                intent.putExtras(bundle);
+                intent.putExtra(NO_OF_ALBUM_SONG, count);
                 startActivity(intent);
             }
         });

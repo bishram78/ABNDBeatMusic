@@ -17,16 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#798EFF"
-            android:text="All tracks"
+            android:background="@color/tabSelected"
+            android:text="@string/all_tracks"
             android:textColor="@android:color/white" />
 
         <View
             android:layout_width="1px"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:background="#798EFF" />
+            android:layout_marginBottom="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@color/tabSelected" />
 
         <Button
             android:id="@+id/id_ahp_artist"
@@ -34,15 +34,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
-            android:text="Artist"
+            android:text="@string/artist"
             android:textColor="@android:color/white" />
 
         <View
             android:layout_width="1px"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:background="#798EFF" />
+            android:layout_marginBottom="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@color/tabSelected" />
 
         <Button
             android:id="@+id/id_ahp_album"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
-            android:text="Album"
+            android:text="@string/album"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
@@ -65,19 +65,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:horizontalSpacing="4dp"
+        android:horizontalSpacing="@dimen/_4dp"
         android:numColumns="3"
-        android:padding="4dp"
-        android:verticalSpacing="4dp"
+        android:padding="@dimen/_4dp"
+        android:verticalSpacing="@dimen/_4dp"
         android:visibility="gone" />
 
     <GridView
         android:id="@+id/id_ahp_grid_4_album"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:horizontalSpacing="8dp"
+        android:horizontalSpacing="@dimen/_8dp"
         android:numColumns="2"
-        android:padding="8dp"
-        android:verticalSpacing="8dp"
+        android:padding="@dimen/_8dp"
+        android:verticalSpacing="@dimen/_8dp"
         android:visibility="gone" />
 </LinearLayout>

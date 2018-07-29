@@ -1,9 +1,15 @@
 <resources>
-    <string name="app_name">BeatMusic</string>
+    <string name="app_name">BeatsMusic</string>
     <string name="locale_musics">Locale musics</string>
     <string name="now_playing">Now playing</string>
     <string name="current_time">00:00</string>
-    <string name="funtion_addition_soon">This function will be added soon.</string>
+    <string name="function_addition_soon">This function will be added soon.</string>
     <string name="the_last_song">This is already the last song</string>
     <string name="the_first_song">This is already the first song</string>
+    <string name="total_track_found">%d Tracks found</string>
+    <string name="song_paused">Paused %s</string>
+    <string name="song_playing">Playing %s</string>
+    <string name="all_tracks">All tracks</string>
+    <string name="artist">Artist</string>
+    <string name="album">Album</string>
 </resources>

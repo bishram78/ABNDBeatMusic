@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
@@ -21,7 +22,6 @@ public class NowPlayingActivity extends AppCompatActivity {
     private ImageButton imageButtonFav;
     private ImageButton imageButtonShare;
     private ImageButton imageButtonMore;
-
     private TextView textViewNowPlayingTrack;
     private TextView textViewArtistAlbum;
     private TextView textViewCurrentTime;
@@ -38,7 +38,7 @@ public class NowPlayingActivity extends AppCompatActivity {
     private static final String INDEX = "index";
     private static final String TRACK_LIST = "track_list";
     private static final String ARTIST_LIST = "artist_list";
-    private static final String ALBUM_LIST = "album_name";
+    private static final String ALBUM_LIST = "album_list";
     private static final String DURATION_LIST = "duration_list";
     private static final long DELAY_MILLIS = 1500;
 
@@ -102,11 +102,13 @@ public class NowPlayingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (evenOrOdd.equals("EVEN")) {
                     imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_play_black));
-                    Toast.makeText(getApplicationContext(), "PAUSED " + trackList.get(index), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),
+                            String.format(Locale.getDefault(), getString(R.string.song_paused), trackList.get(index)), Toast.LENGTH_SHORT).show();
                     evenOrOdd = "ODD";
                 } else if (evenOrOdd.equals("ODD")) {
                     imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_pause_black));
-                    Toast.makeText(getApplicationContext(), "PLAYING " + trackList.get(index), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),
+                            String.format(Locale.getDefault(), getString(R.string.song_playing), trackList.get(index)), Toast.LENGTH_SHORT).show();
                     evenOrOdd = "EVEN";
                 }
 
@@ -127,6 +129,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewNowPlayingTrack.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     String stringArtist = artistList.get(index);
                     String stringAlbum = albumList.get(index);
                     String stringArtistAlbum = stringArtist + " | " + stringAlbum;
@@ -137,6 +140,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewArtistAlbum.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     textViewTotalDuration.setText(durationList.get(index));
                 } else if (index == 0) {
                     Toast.makeText(getApplicationContext(), R.string.the_first_song, Toast.LENGTH_SHORT).show();
@@ -146,6 +150,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewNowPlayingTrack.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     String stringArtist = artistList.get(index);
                     String stringAlbum = albumList.get(index);
                     String stringArtistAlbum = stringArtist + " | " + stringAlbum;
@@ -156,6 +161,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewArtistAlbum.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     textViewTotalDuration.setText(durationList.get(index));
                 }
             }
@@ -175,6 +181,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewNowPlayingTrack.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     String stringArtist = artistList.get(index);
                     String stringAlbum = albumList.get(index);
                     String stringArtistAlbum = stringArtist + " | " + stringAlbum;
@@ -185,6 +192,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewArtistAlbum.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     textViewTotalDuration.setText(durationList.get(index));
                 } else if (index == (trackList.size() - 1)) {
                     Toast.makeText(getApplicationContext(), R.string.the_last_song, Toast.LENGTH_SHORT).show();
@@ -194,6 +202,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewNowPlayingTrack.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     String stringArtist = artistList.get(index);
                     String stringAlbum = albumList.get(index);
                     String stringArtistAlbum = stringArtist + " | " + stringAlbum;
@@ -204,6 +213,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                             textViewArtistAlbum.setSelected(true);
                         }
                     }, DELAY_MILLIS);
+
                     textViewTotalDuration.setText(durationList.get(index));
                 }
             }
@@ -212,35 +222,35 @@ public class NowPlayingActivity extends AppCompatActivity {
         imageButtonRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.function_addition_soon, Toast.LENGTH_SHORT).show();
             }
         });
 
         imageButtonShuffle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.function_addition_soon, Toast.LENGTH_SHORT).show();
             }
         });
 
         imageButtonFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.function_addition_soon, Toast.LENGTH_SHORT).show();
             }
         });
 
         imageButtonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.function_addition_soon, Toast.LENGTH_SHORT).show();
             }
         });
 
         imageButtonMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.function_addition_soon, Toast.LENGTH_SHORT).show();
             }
         });
     }

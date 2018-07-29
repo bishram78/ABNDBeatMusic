@@ -12,4 +12,7 @@
         <!--Customize your theme here. -->
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
+
+    <!--Style for the ImageButtons
+        1. Now-->
 </resources>
