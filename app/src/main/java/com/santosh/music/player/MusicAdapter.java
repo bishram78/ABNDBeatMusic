@@ -4,7 +4,7 @@ package com.santosh.music.player;
  * Created by BISHRAM MUNDA
  * Created on Friday 27/07/2018
  *
- * A custom ArrayAdapter (SongAdapter) that is responsible for handling custom class with ListView;
+ * A custom ArrayAdapter (MusicAdapter) that is responsible for handling custom class with ListView;
  */
 
 import android.content.Context;
@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SongAdapter extends ArrayAdapter<Music> {
+public class MusicAdapter extends ArrayAdapter<Music> {
 
     /**
      * This is our custom constructor (it doesn't mirror a superclass constructor).
@@ -28,7 +28,7 @@ public class SongAdapter extends ArrayAdapter<Music> {
      * @param context   The current context. Used to inflate the layout file.
      * @param music    A list of Music objects to display in a list.
      */
-    public SongAdapter(Context context, ArrayList<Music> music) {
+    public MusicAdapter(Context context, ArrayList<Music> music) {
         /*
          * Here, we initialize the ArrayAdapter's internal storage for the context and the List.
          * the second argument is used when the ArrayAdapter is populating a single TextView.

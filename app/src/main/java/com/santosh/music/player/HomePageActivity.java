@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,13 +22,16 @@ public class HomePageActivity extends AppCompatActivity {
     private ListView listViewTracks;
 
     private ArrayList<Music> songsList;
-    private ArrayList<Artist> artistList;
-    private ArrayList<Album> albumList;
-
-    private Bundle bundle;
-    private Intent intent;
+    private ArrayList<Artist> artistsList;
+    private ArrayList<Album> albumsList;
 
     private static final String INDEX = "index";
+    private static final String NO_OF_SONG = "no_of_song";
+    private static final String ARTIST_NAME = "artist_name";
+    private static final String TRACK_LIST = "track_list";
+    private static final String ARTIST_LIST = "artist_list";
+    private static final String ALBUM_LIST = "album_name";
+    private static final String DURATION_LIST = "duration_list";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,46 +97,46 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     public void sortedArtists() {
-        artistList = new ArrayList<>();
-        artistList.add(new Artist("Akash Lohra"));
-        artistList.add(new Artist("Babu Boruah"));
-        artistList.add(new Artist("Fort Minor"));
-        artistList.add(new Artist("Guru Randhawa"));
-        artistList.add(new Artist("Justin Bieber"));
-        artistList.add(new Artist("Himesh Reshammiya & Shreya Ghoshal"));
-        artistList.add(new Artist("Himesh Reshammiya & Sunidhi Chauhan"));
-        artistList.add(new Artist("Maroon 5"));
-        artistList.add(new Artist("Monika & Egnesh"));
-        artistList.add(new Artist("Nicki Minaj"));
-        artistList.add(new Artist("Rahat Fateh Ali Khan"));
-        artistList.add(new Artist("Rihana"));
-        artistList.add(new Artist("Usher"));
-        artistList.add(new Artist("Unknown"));
+        artistsList = new ArrayList<>();
+        artistsList.add(new Artist("Akash Lohra"));
+        artistsList.add(new Artist("Babu Boruah"));
+        artistsList.add(new Artist("Fort Minor"));
+        artistsList.add(new Artist("Guru Randhawa"));
+        artistsList.add(new Artist("Justin Bieber"));
+        artistsList.add(new Artist("Himesh Reshammiya & Shreya Ghoshal"));
+        artistsList.add(new Artist("Himesh Reshammiya & Sunidhi Chauhan"));
+        artistsList.add(new Artist("Maroon 5"));
+        artistsList.add(new Artist("Monika & Egnesh"));
+        artistsList.add(new Artist("Nicki Minaj"));
+        artistsList.add(new Artist("Rahat Fateh Ali Khan"));
+        artistsList.add(new Artist("Rihana"));
+        artistsList.add(new Artist("Usher"));
+        artistsList.add(new Artist("Unknown"));
     }
 
     public void sortedAlbums() {
-        albumList = new ArrayList<>();
-        albumList.add(new Album("A Girls Like Me"));
-        albumList.add(new Album("Aap Kaa Surroor"));
-        albumList.add(new Album("Beam Me Up Scotty"));
-        albumList.add(new Album("Confessions"));
-        albumList.add(new Album("E Kuri Aa Jana"));
-        albumList.add(new Album("I Won't Be Soon Before Long"));
-        albumList.add(new Album("My World 2.0"));
-        albumList.add(new Album("Raid"));
-        albumList.add(new Album("Single Mp3"));
-        albumList.add(new Album("Unknown"));
+        albumsList = new ArrayList<>();
+        albumsList.add(new Album("A Girls Like Me"));
+        albumsList.add(new Album("Aap Kaa Surroor"));
+        albumsList.add(new Album("Beam Me Up Scotty"));
+        albumsList.add(new Album("Confessions"));
+        albumsList.add(new Album("E Kuri Aa Jana"));
+        albumsList.add(new Album("I Won't Be Soon Before Long"));
+        albumsList.add(new Album("My World 2.0"));
+        albumsList.add(new Album("Raid"));
+        albumsList.add(new Album("Single Mp3"));
+        albumsList.add(new Album("Unknown"));
     }
 
     private void setClicksDefault() {
-        // Create {@links SongAdapter, ArtistAdapter and AlbumAdapter}, whose data source is a
+        // Create {@links MusicAdapter, ArtistAdapter and AlbumAdapter}, whose data source is a
         // list of {@link Music, Artist and Album} respectively.
         // The Custom Adapter knows how to create layout for each item in the list, using the
         // list_item_4_song.xml, list_item_4_artist.xml and list_item_4_album.xml layout resource
         // defined in the res folder of the project.
-        SongAdapter songsArrayAdapter = new SongAdapter(this, songsList);
-        ArtistAdapter artistsArrayAdapter = new ArtistAdapter(this, artistList);
-        AlbumAdapter albumsArrayAdapter = new AlbumAdapter(this, albumList);
+        final MusicAdapter songsArrayAdapter = new MusicAdapter(this, songsList);
+        ArtistAdapter artistsArrayAdapter = new ArtistAdapter(this, artistsList);
+        AlbumAdapter albumsArrayAdapter = new AlbumAdapter(this, albumsList);
 
         // Attach the custom adapters to the ListView and GridViews.
         listViewTracks.setAdapter(songsArrayAdapter);
@@ -178,8 +182,25 @@ public class HomePageActivity extends AppCompatActivity {
         listViewTracks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                intent = new Intent(HomePageActivity.this, NowPlayingActivity.class);
+                //Toast.makeText(getApplicationContext(), String.valueOf(position) + String.valueOf(songsList.size()), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomePageActivity.this, NowPlayingActivity.class);
                 intent.putExtra(INDEX, position);
+                ArrayList<String> trackList = new ArrayList<>();
+                ArrayList<String> artistList = new ArrayList<>();
+                ArrayList<String> albumList = new ArrayList<>();
+                ArrayList<String> durationList = new ArrayList<>();
+                for (int i=0; i<songsList.size(); i++) {
+                    trackList.add(songsList.get(i).getSongTitle());
+                    artistList.add(songsList.get(i).getSongArtist());
+                    albumList.add(songsList.get(i).getSongAlbum());
+                    durationList.add(songsList.get(i).getSongDuration());
+                }
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList(TRACK_LIST, trackList);
+                bundle.putStringArrayList(ARTIST_LIST, artistList);
+                bundle.putStringArrayList(ALBUM_LIST, albumList);
+                bundle.putStringArrayList(DURATION_LIST, durationList);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -187,25 +208,28 @@ public class HomePageActivity extends AppCompatActivity {
         gridViewArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                intent = new Intent(HomePageActivity.this, ArtistDetailsActivity.class);
+                Intent intent = new Intent(HomePageActivity.this, ArtistDetailsActivity.class);
                 intent.putExtra(INDEX, position);
-                intent.putExtra("ARTIST_NAME", artistList.get(position).getSongArtist());
-                ArrayList<String> songs = new ArrayList<>();
-                ArrayList<String> albums = new ArrayList<>();
-                ArrayList<String> durations = new ArrayList<>();
+                intent.putExtra("ARTIST_NAME", artistsList.get(position).getSongArtist());
+                ArrayList<String> trackList = new ArrayList<>();
+                ArrayList<String> artistList = new ArrayList<>();
+                ArrayList<String> albumList = new ArrayList<>();
+                ArrayList<String> durationList = new ArrayList<>();
                 int count = 0;
-                for (int i = 0; i < songsList.size()-1; i++) {
-                    if (songsList.get(i).getSongArtist().equals(artistList.get(position).getSongArtist())) {
-                        songs.add(songsList.get(i).getSongTitle());
-                        albums.add(songsList.get(i).getSongAlbum());
-                        durations.add(songsList.get(i).getSongDuration());
+                for (int i = 0; i < songsList.size(); i++) {
+                    if (songsList.get(i).getSongArtist().equals(artistsList.get(position).getSongArtist())) {
+                        trackList.add(songsList.get(i).getSongTitle());
+                        artistList.add(songsList.get(i).getSongArtist());
+                        albumList.add(songsList.get(i).getSongAlbum());
+                        durationList.add(songsList.get(i).getSongDuration());
                         count++;
                     }
                 }
-                bundle = new Bundle();
-                bundle.putStringArrayList("SONGS_LIST", songs);
-                bundle.putStringArrayList("ALBUMS_LIST", albums);
-                bundle.putStringArrayList("DURATIONS_LIST", durations);
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList(TRACK_LIST, trackList);
+                bundle.putStringArrayList(ARTIST_LIST, artistList);
+                bundle.putStringArrayList(ALBUM_LIST, albumList);
+                bundle.putStringArrayList(DURATION_LIST, durationList);
                 intent.putExtras(bundle);
                 intent.putExtra("NO_OF_SONG", count);
                 startActivity(intent);

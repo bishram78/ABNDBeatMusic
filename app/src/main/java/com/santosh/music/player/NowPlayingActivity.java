@@ -25,25 +25,60 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     private TextView textViewNowPlayingTrack;
     private TextView textViewArtistAlbum;
+    private TextView textViewCurrentTime;
     private TextView textViewTotalDuration;
 
-    //Declared ArrayList of Music list
-    private ArrayList<Music> songsList;
+    private ArrayList<String> trackList;
+    private ArrayList<String> artistList;
+    private ArrayList<String> albumList;
+    private ArrayList<String> durationList;
 
-    //KEEP TRACK OF SONG'S SERIAL NUMBER (INDEX)
     private int index;
-    private String evenOrOdd = "EVEN";
+    private String evenOrOdd = "ODD";
 
     private static final String INDEX = "index";
+    private static final String NO_OF_SONG = "no_of_song";
+    private static final String ARTIST_NAME = "artist_name";
+    private static final String TRACK_LIST = "track_list";
+    private static final String ARTIST_LIST = "artist_list";
+    private static final String ALBUM_LIST = "album_name";
+    private static final String DURATION_LIST = "duration_list";
+    private static final long DELAY_MILLIS = 1500;
 
-    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
 
         referenceToIDs();
-        addSongs();
+
+        Intent intent = getIntent();
+        index = intent.getIntExtra(INDEX, 0);
+        trackList = intent.getStringArrayListExtra(TRACK_LIST);
+        artistList = intent.getStringArrayListExtra(ARTIST_LIST);
+        albumList = intent.getStringArrayListExtra(ALBUM_LIST);
+        durationList = intent.getStringArrayListExtra(DURATION_LIST);
+
+        textViewNowPlayingTrack.setText(trackList.get(index));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                textViewNowPlayingTrack.setSelected(true);
+            }
+        }, DELAY_MILLIS);
+
+        String artist_album = artistList.get(index) + " | " + albumList.get(index);
+        textViewArtistAlbum.setText(artist_album);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                textViewArtistAlbum.setSelected(true);
+            }
+        }, DELAY_MILLIS);
+
+        textViewCurrentTime.setText("00:00");
+        textViewTotalDuration.setText(durationList.get(index));
+
         setClicksDefault();
     }
 
@@ -58,203 +93,154 @@ public class NowPlayingActivity extends AppCompatActivity {
         imageButtonMore = findViewById(R.id.id_anp_more);
         textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
         textViewArtistAlbum = findViewById(R.id.id_anp_artist_album);
+        textViewCurrentTime = findViewById(R.id.id_anp_time_skipped);
         textViewTotalDuration = findViewById(R.id.id_anp_time_total);
     }
 
     private void setClicksDefault() {
-        Intent intent = getIntent();
-        index = intent.getIntExtra(INDEX, 0);
-
-        textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                textViewNowPlayingTrack.setSelected(true);
-            }
-        }, 1000);
-        String stringArtist = songsList.get(index).getSongArtist();
-        String stringAlbum = songsList.get(index).getSongAlbum();
-        String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-        textViewArtistAlbum.setText(stringArtistAlbum);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                textViewArtistAlbum.setSelected(true);
-            }
-        }, 1000);
-        textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-
         imageButtonPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (evenOrOdd.equals("EVEN")) {
                     imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_play_black));
-                    Toast.makeText(getApplicationContext(), "PAUSED " + songsList.get(index).getSongTitle(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "PAUSED " + trackList.get(index), Toast.LENGTH_SHORT).show();
                     evenOrOdd = "ODD";
                 } else if (evenOrOdd.equals("ODD")) {
                     imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_pause_black));
-                    Toast.makeText(getApplicationContext(), "PLAYING " + songsList.get(index).getSongTitle(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "PLAYING " + trackList.get(index), Toast.LENGTH_SHORT).show();
                     evenOrOdd = "EVEN";
                 }
 
             }
         });
 
-        imageButtonPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textViewNowPlayingTrack.setSelected(false);
-                if (index > 0) {
-                    index--;
-                    textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewNowPlayingTrack.setSelected(true);
-                        }
-                    }, 1000);
-                    String stringArtist = songsList.get(index).getSongArtist();
-                    String stringAlbum = songsList.get(index).getSongAlbum();
-                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-                    textViewArtistAlbum.setText(stringArtistAlbum);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewArtistAlbum.setSelected(true);
-                        }
-                    }, 1000);
-                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-                } else if (index == 0) {
-                    Toast.makeText(getApplicationContext(), "This is already the first song", Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewNowPlayingTrack.setSelected(true);
-                        }
-                    }, 1000);
-                    String stringArtist = songsList.get(index).getSongArtist();
-                    String stringAlbum = songsList.get(index).getSongAlbum();
-                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-                    textViewArtistAlbum.setText(stringArtistAlbum);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewArtistAlbum.setSelected(true);
-                        }
-                    }, 1000);
-                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-                }
-            }
-        });
-
-        imageButtonNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textViewNowPlayingTrack.setSelected(false);
-                if (index < (songsList.size() - 1)) {
-                    index++;
-                    textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewNowPlayingTrack.setSelected(true);
-                        }
-                    }, 1000);
-                    String stringArtist = songsList.get(index).getSongArtist();
-                    String stringAlbum = songsList.get(index).getSongAlbum();
-                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-                    textViewArtistAlbum.setText(stringArtistAlbum);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewArtistAlbum.setSelected(true);
-                        }
-                    }, 1000);
-                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-                } else if (index == (songsList.size() - 1)) {
-                    Toast.makeText(getApplicationContext(), "This is already the last song", Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewNowPlayingTrack.setSelected(true);
-                        }
-                    }, 1000);
-                    String stringArtist = songsList.get(index).getSongArtist();
-                    String stringAlbum = songsList.get(index).getSongAlbum();
-                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-                    textViewArtistAlbum.setText(stringArtistAlbum);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            textViewArtistAlbum.setSelected(true);
-                        }
-                    }, 1000);
-                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-                }
-            }
-        });
-
-        imageButtonRepeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButtonShuffle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButtonFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButtonShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButtonMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    private void addSongs() {
-        //Create an ArrayList of Music Objects;
-        songsList = new ArrayList<>();
-        songsList.add(new Music("A Girl Like Me - www.MyMp3Singers.com", "Rihana", "A Girls Like Me", "04:18"));
-        songsList.add(new Music("Baby Ft. Ludacris - www.Hungama.com", "Justin Bieber", "My World 2.0", "03:34"));
-        songsList.add(new Music("Better That We Break - www.PagalWorld.com", "Maroon 5", "I Won't Be Soon Before Long", "03:21"));
-        songsList.add(new Music("Break It Off With Sean Paul - www.PagalWorld.com", "Rihana", "A Girls Like Me", "03:33"));
-        songsList.add(new Music("Burn - www.SongsLover.Info", "Usher", "Confessions", "03:44"));
-        songsList.add(new Music("Eenie Meenie Ft. Sean Kingston - www.WebMusic.in", "Justin Bieber", "My World 2.0", "03:23"));
-        songsList.add(new Music("Fashion - www.MyMp3Singers.com", "Guru Randhawa", "Single Mp3", "04:16"));
-        songsList.add(new Music("Goriya Re Kaahe - www.SadriMuzik.com", "Unknown", "Single Mp3", "05:09"));
-        songsList.add(new Music("Handstand Ft. Shanell - www.DJMaza.Info", "Nicki Minaj", "Beam Me Up Scotty", "03:08"));
-        songsList.add(new Music("I Get Crazy Ft. Lil Wayne - www.PagalWorld.com", "Nicki Minaj", "Beam Me Up Scotty", "03:41"));
-        songsList.add(new Music("Lahore - www.DownloadMing.Info", "Guru Randhawa", "Single Mp3", "03:16"));
-        songsList.add(new Music("Luhurr Luhurr - www.YouTube.com", "Unknown", "E Kuri Aa Jana", "04:57"));
-        songsList.add(new Music("Madwa Mein Mandar - www.Fun2Desi.com", "Monika & Egnesh", "Unknown", "05:11"));
-        songsList.add(new Music("Pedal Mari Mari - www.JharkhandWap.In", "Babu Boruah", "Single Mp3", "04:38"));
-        songsList.add(new Music("Remember The Name - www.PagalWorld.com", "Fort Minor", "Single Mp3", "03:49"));
-        songsList.add(new Music("Rupa Re - www.NagpuriMasti.Net", "Akash Lohra", "Unknown", "05:40"));
-        songsList.add(new Music("Sanu Ek Pal Chain Na - www.Songs.PK", "Rahat Fateh Ali Khan", "Raid", "08:25"));
-        songsList.add(new Music("Sugar - www.SongsLover.Info", "Maroon 5", "Single Mp3", "03:56"));
-        songsList.add(new Music("Tera Mera Milna - www.FreshMaza.In", "Himesh Reshammiya & Shreya Ghoshal", "Aap Kaa Surroor", "05:50"));
-        songsList.add(new Music("That Should Be Me - www.BossMobi.IN", "Justin Bieber", "My World 2.0", "03:53"));
-        songsList.add(new Music("Tirchhi Nazariya - www.SadriMuzik.Com", "Unknown", "Unknown", "04:53"));
-        songsList.add(new Music("U Smile - www.DJMaza.Info", "Justin Bieber", "My World 2.0", "03:17"));
-        songsList.add(new Music("Ya Ali - www.Gaana.com", "Himesh Reshammiya & Sunidhi Chauhan", "Aap Kaa Surroor", "04:32"));
-        songsList.add(new Music("Yeah! Ft. Lil Jon & Ludacris - www.DJMaza.Info", "Usher", "Confessions", "04:10"));
+//        imageButtonPrevious.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                textViewNowPlayingTrack.setSelected(false);
+//                if (index > 0) {
+//                    index--;
+//                    textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewNowPlayingTrack.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    String stringArtist = songsList.get(index).getSongArtist();
+//                    String stringAlbum = songsList.get(index).getSongAlbum();
+//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+//                    textViewArtistAlbum.setText(stringArtistAlbum);
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewArtistAlbum.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
+//                } else if (index == 0) {
+//                    Toast.makeText(getApplicationContext(), "This is already the first song", Toast.LENGTH_SHORT).show();
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewNowPlayingTrack.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    String stringArtist = songsList.get(index).getSongArtist();
+//                    String stringAlbum = songsList.get(index).getSongAlbum();
+//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+//                    textViewArtistAlbum.setText(stringArtistAlbum);
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewArtistAlbum.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
+//                }
+//            }
+//        });
+//
+//        imageButtonNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                textViewNowPlayingTrack.setSelected(false);
+//                if (index < (songsList.size() - 1)) {
+//                    index++;
+//                    textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewNowPlayingTrack.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    String stringArtist = songsList.get(index).getSongArtist();
+//                    String stringAlbum = songsList.get(index).getSongAlbum();
+//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+//                    textViewArtistAlbum.setText(stringArtistAlbum);
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewArtistAlbum.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
+//                } else if (index == (songsList.size() - 1)) {
+//                    Toast.makeText(getApplicationContext(), "This is already the last song", Toast.LENGTH_SHORT).show();
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewNowPlayingTrack.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    String stringArtist = songsList.get(index).getSongArtist();
+//                    String stringAlbum = songsList.get(index).getSongAlbum();
+//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+//                    textViewArtistAlbum.setText(stringArtistAlbum);
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            textViewArtistAlbum.setSelected(true);
+//                        }
+//                    }, 1000);
+//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
+//                }
+//            }
+//        });
+//
+//        imageButtonRepeat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        imageButtonShuffle.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        imageButtonFav.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        imageButtonShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        imageButtonMore.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

@@ -81,8 +81,8 @@
             android:id="@+id/id_anp_time_skipped"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00"
-            android:textColor="?attr/colorPrimaryDark" />
+            android:textColor="?attr/colorPrimaryDark"
+            tools:text="00:00" />
 
         <TextView
             android:id="@+id/id_anp_time_total"
@@ -249,5 +249,4 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_action_next_black" />
     </android.support.constraint.ConstraintLayout>
-
 </android.support.constraint.ConstraintLayout>
