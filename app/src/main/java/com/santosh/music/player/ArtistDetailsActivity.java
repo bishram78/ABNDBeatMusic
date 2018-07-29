@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,47 +14,49 @@ import java.util.ArrayList;
 
 public class ArtistDetailsActivity extends AppCompatActivity {
 
+    private ImageButton imageButtonPlayAll;
+    private TextView textViewArtistName;
+    private TextView textViewNoOfSongs;
+    private ListView listViewSongsList;
 
-    private static final String ARTIST_NAME = "artist_name";
-    private static final String BUNDLE_OF_SONGS = "bundle_of_songs";
+    private Intent intent;
+    private ArrayList<String> songList;
+    private ArrayList<String> artistList;
+    private ArrayList<String> albumList;
+
     private static final String INDEX = "index";
-    private static final String NOW_PLAYING_TRACK = "now_playing_track";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artist_details);
 
-        final Intent intent = getIntent();
-        String artistName = intent.getStringExtra(ARTIST_NAME);
-        TextView textViewArtistName = findViewById(R.id.id_aad_artist_name_header);
+        referenceToIDs();
+
+        intent = getIntent();
+        String artistName = intent.getStringExtra("ARTIST_NAME");
+        String noOfSongs = intent.getIntExtra("NO_OF_SONG", 0) + " Tracks found";
         textViewArtistName.setText(artistName);
+        textViewNoOfSongs.setText(noOfSongs);
 
-        final ArrayList<String> artistSongs = new ArrayList<>();
-        artistSongs.add("Track/Music Name ONE - www.Website.com");
-        artistSongs.add("Track/Music Name TWO - www.Website.com");
-        artistSongs.add("Track/Music Name THREE - www.Website.com");
-        artistSongs.add("Track/Music Name FOUR - www.Website.com");
-        artistSongs.add("Track/Music Name FIVE - www.Website.com");
-        artistSongs.add("Track/Music Name SIX - www.Website.com");
-        artistSongs.add("Track/Music Name SEVEN - www.Website.com");
-        artistSongs.add("Track/Music Name EIGHT - www.Website.com");
+//        listViewArtistSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent songsIntent = new Intent(ArtistDetailsActivity.this, NowPlayingActivity.class);
+//                songsIntent.putExtra(NOW_PLAYING_TRACK, artistSongs.get(position));
+//                songsIntent.putExtra(INDEX, position);
+//                Bundle bundle = new Bundle();
+//                bundle.putStringArrayList(BUNDLE_OF_SONGS, artistSongs);
+//                songsIntent.putExtras(bundle);
+//                startActivity(songsIntent);
+//            }
+//        });
+    }
 
-        ArrayAdapter<String> asArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artistSongs);
-        ListView listViewArtistSongs = findViewById(R.id.id_aad_songs_list);
-        listViewArtistSongs.setAdapter(asArrayAdapter);
-
-        listViewArtistSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent songsIntent = new Intent(ArtistDetailsActivity.this, NowPlayingActivity.class);
-                songsIntent.putExtra(NOW_PLAYING_TRACK, artistSongs.get(position));
-                songsIntent.putExtra(INDEX, position);
-                Bundle bundle = new Bundle();
-                bundle.putStringArrayList(BUNDLE_OF_SONGS, artistSongs);
-                songsIntent.putExtras(bundle);
-                startActivity(songsIntent);
-            }
-        });
+    protected void referenceToIDs() {
+        textViewArtistName = findViewById(R.id.id_aad_artist_name_header);
+        textViewNoOfSongs = findViewById(R.id.id_aad_no_albums_tracks);
+        imageButtonPlayAll = findViewById(R.id.id_aad_play_all);
+        listViewSongsList = findViewById(R.id.id_aad_songs_list);
     }
 }

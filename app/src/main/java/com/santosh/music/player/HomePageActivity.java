@@ -183,16 +183,35 @@ public class HomePageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//
-//        gridViewArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                intent = new Intent(HomePageActivity.this, ArtistDetailsActivity.class);
-//                intent.putExtra(ARTIST_NAME, artistList.get(position).getSongArtist());
-//                startActivity(intent);
-//            }
-//        });
-//
+
+        gridViewArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                intent = new Intent(HomePageActivity.this, ArtistDetailsActivity.class);
+                intent.putExtra(INDEX, position);
+                intent.putExtra("ARTIST_NAME", artistList.get(position).getSongArtist());
+                ArrayList<String> songs = new ArrayList<>();
+                ArrayList<String> albums = new ArrayList<>();
+                ArrayList<String> durations = new ArrayList<>();
+                int count = 0;
+                for (int i = 0; i < songsList.size()-1; i++) {
+                    if (songsList.get(i).getSongArtist().equals(artistList.get(position).getSongArtist())) {
+                        songs.add(songsList.get(i).getSongTitle());
+                        albums.add(songsList.get(i).getSongAlbum());
+                        durations.add(songsList.get(i).getSongDuration());
+                        count++;
+                    }
+                }
+                bundle = new Bundle();
+                bundle.putStringArrayList("SONGS_LIST", songs);
+                bundle.putStringArrayList("ALBUMS_LIST", albums);
+                bundle.putStringArrayList("DURATIONS_LIST", durations);
+                intent.putExtras(bundle);
+                intent.putExtra("NO_OF_SONG", count);
+                startActivity(intent);
+            }
+        });
+
 //        gridViewAlbums.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
