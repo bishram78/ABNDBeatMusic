@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomePageActivity">
+        <activity
+            android:name=".HomePageActivity"
+            android:label="@string/locale_musics">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -21,9 +23,12 @@
         </activity>
         <activity
             android:name=".NowPlayingActivity"
-            android:label="Now playing track" />
+            android:label="@string/now_playing" />
         <activity
             android:name=".ArtistDetailsActivity"
+            android:theme="@style/FullScreenTheme" />
+        <activity
+            android:name=".AlbumDetailsActivity"
             android:theme="@style/FullScreenTheme"/>
     </application>
 

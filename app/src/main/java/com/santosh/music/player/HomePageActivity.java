@@ -57,10 +57,10 @@ public class HomePageActivity extends AppCompatActivity {
     private void addSongs() {
         //Create an ArrayList of Music Objects;
         songsList = new ArrayList<>();
-        songsList.add(new Music("A Girl Like Me - www.MyMp3Singers.com", "Rihana", "A Girls Like Me", "04:18"));
+        songsList.add(new Music("A Girl Like Me - www.MyMp3Singers.com", "Rihana", "A Girl Like Me", "04:18"));
         songsList.add(new Music("Baby Ft. Ludacris - www.Hungama.com", "Justin Bieber", "My World 2.0", "03:34"));
         songsList.add(new Music("Better That We Break - www.PagalWorld.com", "Maroon 5", "I Won't Be Soon Before Long", "03:21"));
-        songsList.add(new Music("Break It Off With Sean Paul - www.PagalWorld.com", "Rihana", "A Girls Like Me", "03:33"));
+        songsList.add(new Music("Break It Off With Sean Paul - www.PagalWorld.com", "Rihana", "A Girl Like Me", "03:33"));
         songsList.add(new Music("Burn - www.SongsLover.Info", "Usher", "Confessions", "03:44"));
         songsList.add(new Music("Eenie Meenie Ft. Sean Kingston - www.WebMusic.in", "Justin Bieber", "My World 2.0", "03:23"));
         songsList.add(new Music("Fashion - www.MyMp3Singers.com", "Guru Randhawa", "Single Mp3", "04:16"));
@@ -81,19 +81,6 @@ public class HomePageActivity extends AppCompatActivity {
         songsList.add(new Music("U Smile - www.DJMaza.Info", "Justin Bieber", "My World 2.0", "03:17"));
         songsList.add(new Music("Ya Ali - www.Gaana.com", "Himesh Reshammiya & Sunidhi Chauhan", "Aap Kaa Surroor", "04:32"));
         songsList.add(new Music("Yeah! Ft. Lil Jon & Ludacris - www.DJMaza.Info", "Usher", "Confessions", "04:10"));
-//        songsList.add(new Music("Mere Lamhon Ki Aarzoo - www.WebMusic.In", "Himesh Reshammiya", "Aarzoo", "05:50"));
-//        songsList.add(new Music("Naina Se Lor Bahela (DJ Remix By Guru) - www.NagpuriWap.IN", "Pawan & Mittal Devi", "Adhunik Nagpuri", "06:30"));
-//        songsList.add(new Music("One Dance Ft. Justin Bieber - www.9xTune.com", "Chris Brown", "Once Dance", "02:58"));
-//        songsList.add(new Music("Pal Pal Dil Ke Paas - www.Songs.Pk", "Sanam Puri", "Single Mp3", "04:39"));
-//        songsList.add(new Music("Saanson Ke - www.MyMp3Songs.Info", "Azhar Kakkar", "Masoom Chehra", "04:42"));
-//        songsList.add(new Music("See You Again Ft. Charlie Puth - wwww.RiskyjaTT.CoM", "Wiz Khalifa", "Fast & Furious", "04:42"));
-//        songsList.add(new Music("Something New Feat. Chris Brown - www.Howwe.Biz", "Charlie Puth", "Slow Down", "03:51"));
-//        songsList.add(new Music("Swag Babe Ft. Millind Gaba - wwww.PagalWorld.com", "Badshah", "Swaagat", "04:08"));
-//        songsList.add(new Music("Thanda Thanda Cool Cool (Dance Mix By DJ Chandan) - www.DjOnly.IN", "Hemlata & Ramesh", "Barf Badan", "05:06"));
-//        songsList.add(new Music("Tore Se Pyaar - www.SadriMasti.IN", "Munna Dhamal & Supriya", "Tore Se Pyaar", "06:00"));
-//        songsList.add(new Music("Yeah Ft. Lil Jon and Ludacris - www.SongsLover.Info", "Usher", "Confessions", "04:00"));
-//        songsList.add(new Music("Zindagi Gulzar Hai - www.PakHeaven.Com", "Nikita & Nisha", "Zindagi Ke Rang", "05:00"));
-//        songsList.add(new Music("Zindegi (Unplugged) - www.Fun2Desi.com", "Shael Oswal", "Zindagi Universal", "04:44"));
     }
 
     public void sortedArtists() {
@@ -116,7 +103,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     public void sortedAlbums() {
         albumsList = new ArrayList<>();
-        albumsList.add(new Album("A Girls Like Me"));
+        albumsList.add(new Album("A Girl Like Me"));
         albumsList.add(new Album("Aap Kaa Surroor"));
         albumsList.add(new Album("Beam Me Up Scotty"));
         albumsList.add(new Album("Confessions"));
@@ -236,13 +223,12 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-//        gridViewAlbums.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                intent = new Intent(HomePageActivity.this, NowPlayingActivity.class);
-//                intent.putExtra(NOW_PLAYING_TRACK, albumList.get(position).getSongAlbum());
-//                startActivity(intent);
-//            }
-//        });
+        gridViewAlbums.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(HomePageActivity.this, AlbumDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

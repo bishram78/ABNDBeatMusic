@@ -1,6 +1,5 @@
 package com.santosh.music.player;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -34,11 +33,9 @@ public class NowPlayingActivity extends AppCompatActivity {
     private ArrayList<String> durationList;
 
     private int index;
-    private String evenOrOdd = "ODD";
+    private String evenOrOdd = "EVEN";
 
     private static final String INDEX = "index";
-    private static final String NO_OF_SONG = "no_of_song";
-    private static final String ARTIST_NAME = "artist_name";
     private static final String TRACK_LIST = "track_list";
     private static final String ARTIST_LIST = "artist_list";
     private static final String ALBUM_LIST = "album_name";
@@ -51,7 +48,26 @@ public class NowPlayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_now_playing);
 
         referenceToIDs();
+        setReceivedIntent();
+        setClicksDefault();
+    }
 
+    private void referenceToIDs() {
+        imageButtonPlayPause = findViewById(R.id.id_anp_play_pause);
+        imageButtonNext = findViewById(R.id.id_anp_next);
+        imageButtonPrevious = findViewById(R.id.id_anp_previous);
+        imageButtonRepeat = findViewById(R.id.id_anp_repeat);
+        imageButtonShuffle = findViewById(R.id.id_anp_shuffle);
+        imageButtonFav = findViewById(R.id.id_anp_fav_heart);
+        imageButtonShare = findViewById(R.id.id_anp_share);
+        imageButtonMore = findViewById(R.id.id_anp_more);
+        textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
+        textViewArtistAlbum = findViewById(R.id.id_anp_artist_album);
+        textViewCurrentTime = findViewById(R.id.id_anp_time_skipped);
+        textViewTotalDuration = findViewById(R.id.id_anp_time_total);
+    }
+
+    private void setReceivedIntent() {
         Intent intent = getIntent();
         index = intent.getIntExtra(INDEX, 0);
         trackList = intent.getStringArrayListExtra(TRACK_LIST);
@@ -76,25 +92,8 @@ public class NowPlayingActivity extends AppCompatActivity {
             }
         }, DELAY_MILLIS);
 
-        textViewCurrentTime.setText("00:00");
+        textViewCurrentTime.setText(R.string.current_time);
         textViewTotalDuration.setText(durationList.get(index));
-
-        setClicksDefault();
-    }
-
-    private void referenceToIDs() {
-        imageButtonPlayPause = findViewById(R.id.id_anp_play_pause);
-        imageButtonNext = findViewById(R.id.id_anp_next);
-        imageButtonPrevious = findViewById(R.id.id_anp_previous);
-        imageButtonRepeat = findViewById(R.id.id_anp_repeat);
-        imageButtonShuffle = findViewById(R.id.id_anp_shuffle);
-        imageButtonFav = findViewById(R.id.id_anp_fav_heart);
-        imageButtonShare = findViewById(R.id.id_anp_share);
-        imageButtonMore = findViewById(R.id.id_anp_more);
-        textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
-        textViewArtistAlbum = findViewById(R.id.id_anp_artist_album);
-        textViewCurrentTime = findViewById(R.id.id_anp_time_skipped);
-        textViewTotalDuration = findViewById(R.id.id_anp_time_total);
     }
 
     private void setClicksDefault() {
@@ -114,133 +113,135 @@ public class NowPlayingActivity extends AppCompatActivity {
             }
         });
 
-//        imageButtonPrevious.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                textViewNowPlayingTrack.setSelected(false);
-//                if (index > 0) {
-//                    index--;
-//                    textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewNowPlayingTrack.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    String stringArtist = songsList.get(index).getSongArtist();
-//                    String stringAlbum = songsList.get(index).getSongAlbum();
-//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-//                    textViewArtistAlbum.setText(stringArtistAlbum);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewArtistAlbum.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-//                } else if (index == 0) {
-//                    Toast.makeText(getApplicationContext(), "This is already the first song", Toast.LENGTH_SHORT).show();
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewNowPlayingTrack.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    String stringArtist = songsList.get(index).getSongArtist();
-//                    String stringAlbum = songsList.get(index).getSongAlbum();
-//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-//                    textViewArtistAlbum.setText(stringArtistAlbum);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewArtistAlbum.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-//                }
-//            }
-//        });
-//
-//        imageButtonNext.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                textViewNowPlayingTrack.setSelected(false);
-//                if (index < (songsList.size() - 1)) {
-//                    index++;
-//                    textViewNowPlayingTrack.setText(songsList.get(index).getSongTitle());
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewNowPlayingTrack.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    String stringArtist = songsList.get(index).getSongArtist();
-//                    String stringAlbum = songsList.get(index).getSongAlbum();
-//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-//                    textViewArtistAlbum.setText(stringArtistAlbum);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewArtistAlbum.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-//                } else if (index == (songsList.size() - 1)) {
-//                    Toast.makeText(getApplicationContext(), "This is already the last song", Toast.LENGTH_SHORT).show();
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewNowPlayingTrack.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    String stringArtist = songsList.get(index).getSongArtist();
-//                    String stringAlbum = songsList.get(index).getSongAlbum();
-//                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
-//                    textViewArtistAlbum.setText(stringArtistAlbum);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textViewArtistAlbum.setSelected(true);
-//                        }
-//                    }, 1000);
-//                    textViewTotalDuration.setText(songsList.get(index).getSongDuration());
-//                }
-//            }
-//        });
-//
-//        imageButtonRepeat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        imageButtonShuffle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        imageButtonFav.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        imageButtonShare.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        imageButtonMore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "This function will be added soon.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        imageButtonPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewNowPlayingTrack.setSelected(false);
+                textViewArtistAlbum.setSelected(false);
+                if (index > 0) {
+                    index--;
+                    textViewNowPlayingTrack.setText(trackList.get(index));
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewNowPlayingTrack.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    String stringArtist = artistList.get(index);
+                    String stringAlbum = albumList.get(index);
+                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+                    textViewArtistAlbum.setText(stringArtistAlbum);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewArtistAlbum.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    textViewTotalDuration.setText(durationList.get(index));
+                } else if (index == 0) {
+                    Toast.makeText(getApplicationContext(), R.string.the_first_song, Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewNowPlayingTrack.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    String stringArtist = artistList.get(index);
+                    String stringAlbum = albumList.get(index);
+                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+                    textViewArtistAlbum.setText(stringArtistAlbum);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewArtistAlbum.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    textViewTotalDuration.setText(durationList.get(index));
+                }
+            }
+        });
+
+        imageButtonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewNowPlayingTrack.setSelected(false);
+                textViewArtistAlbum.setSelected(false);
+                if (index < (trackList.size() - 1)) {
+                    index++;
+                    textViewNowPlayingTrack.setText(trackList.get(index));
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewNowPlayingTrack.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    String stringArtist = artistList.get(index);
+                    String stringAlbum = albumList.get(index);
+                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+                    textViewArtistAlbum.setText(stringArtistAlbum);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewArtistAlbum.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    textViewTotalDuration.setText(durationList.get(index));
+                } else if (index == (trackList.size() - 1)) {
+                    Toast.makeText(getApplicationContext(), R.string.the_last_song, Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewNowPlayingTrack.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    String stringArtist = artistList.get(index);
+                    String stringAlbum = albumList.get(index);
+                    String stringArtistAlbum = stringArtist + " | " + stringAlbum;
+                    textViewArtistAlbum.setText(stringArtistAlbum);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            textViewArtistAlbum.setSelected(true);
+                        }
+                    }, DELAY_MILLIS);
+                    textViewTotalDuration.setText(durationList.get(index));
+                }
+            }
+        });
+
+        imageButtonRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imageButtonShuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imageButtonFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imageButtonShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imageButtonMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), R.string.funtion_addition_soon, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

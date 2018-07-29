@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Music Player</string>
+    <string name="app_name">BeatMusic</string>
+    <string name="locale_musics">Locale musics</string>
+    <string name="now_playing">Now playing</string>
+    <string name="current_time">00:00</string>
+    <string name="funtion_addition_soon">This function will be added soon.</string>
+    <string name="the_last_song">This is already the last song</string>
+    <string name="the_first_song">This is already the first song</string>
 </resources>
