@@ -22,17 +22,17 @@ public class MusicAdapter extends ArrayAdapter<Music> {
 
     /**
      * This is our custom constructor (it doesn't mirror a superclass constructor).
-     * The context is used to inflate the layout finle, and the List is the data we want
+     * The context is used to inflate the layout file, and the List is the data we want
      * to populate into the lists.
      *
      * @param context   The current context. Used to inflate the layout file.
-     * @param music    A list of Music objects to display in a list.
+     * @param music     A list of Music objects to display in a list.
      */
     public MusicAdapter(Context context, ArrayList<Music> music) {
         /*
          * Here, we initialize the ArrayAdapter's internal storage for the context and the List.
          * the second argument is used when the ArrayAdapter is populating a single TextView.
-         * Because this is a Custom Adapter for two TextViews, the adapter is no longer
+         * Because this is a Custom Adapter for four TextViews, the adapter is no longer
          * going to use this second argument, so it can be any value. Here, we used 0;
          */
         super(context, 0, music);
@@ -41,11 +41,11 @@ public class MusicAdapter extends ArrayAdapter<Music> {
     /**
      * Provides a view for an AdapterView (ListView, GridView, etc.)
      *
-     * @param position  The AdapterView position that is requesting a view
-     * @param convertView The recycled view to populate.
-     *                  (Search online for "android view recycling" to learn more)
-     * @param parent    The parent ViewGroup that is used for inflation
-     * return    The View for the position in the AdapterView.
+     * @param position      The AdapterView position that is requesting a view
+     * @param convertView   The recycled view to populate.
+     *                      (Search online for "android view recycling" to learn more)
+     * @param parent        The parent ViewGroup that is used for inflation
+     * return               The View for the position in the AdapterView.
      */
     @NonNull
     @Override
@@ -65,9 +65,9 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         TextView textViewArtistAlbum = listItemView.findViewById(R.id.id_mli_artist_album);
         TextView textViewDuration = listItemView.findViewById(R.id.id_mli_duration);
 
-        assert currentMusic != null;
-        // Get the Title, Artist, AlbumAdapter and Duration from the current Music object and set the text
+        // Get the Title, Artist, Album and Duration from the current Music object and set the text
         // on the respective textViews
+        assert currentMusic != null;
         textViewTitle.setText(currentMusic.getSongTitle());
         String artist_album = String.format("%s | %s", currentMusic.getSongArtist(), currentMusic.getSongAlbum());
         textViewArtistAlbum.setText(artist_album);

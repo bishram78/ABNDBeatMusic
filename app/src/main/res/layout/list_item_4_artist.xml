@@ -15,17 +15,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_bm_logo_128" />
+        app:srcCompat="@drawable/artist_bkg_img_128" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        android:maxLines="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:text="Artist Name"
-        android:maxLines="2"
-        android:lines="2"
-        android:gravity="center"/>
+        tools:text="Artist Name" />
 </android.support.constraint.ConstraintLayout>

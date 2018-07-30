@@ -51,9 +51,8 @@ public class ArtistDetailsActivity extends AppCompatActivity {
 
     protected void setReceivedIntents() {
         Intent intent = getIntent();
-        String artistName = intent.getStringExtra(ARTIST_NAME);
         String noOfSongsFound = String.format(Locale.getDefault(), getString(R.string.total_track_found), intent.getIntExtra(NO_OF_ARTIST_SONG, 0));
-        textViewArtistName.setText(artistName);
+        textViewArtistName.setText(intent.getStringExtra(ARTIST_NAME));
         textViewNoOfSongs.setText(noOfSongsFound);
 
         trackList = intent.getStringArrayListExtra(TRACK_LIST);
@@ -84,6 +83,7 @@ public class ArtistDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         listViewSongsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

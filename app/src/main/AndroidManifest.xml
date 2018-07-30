@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.santosh.music.player">
 
     <application
         android:allowBackup="true"
         android:fullBackupContent="false"
-        android:icon="@drawable/ic_launcher_bm_logo_128"
+        android:icon="@drawable/music_launcher_icon_96"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".HomePageActivity"
-            android:label="@string/locale_musics">
-            <intent-filter
-                android:label="@string/app_name">
+            android:theme="@style/NoActionBarTheme">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 

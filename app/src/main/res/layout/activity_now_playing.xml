@@ -101,6 +101,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/id_anp_time_skipped"
             android:layout_centerHorizontal="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:indeterminateTintMode="add"
             tools:targetApi="lollipop" />
     </RelativeLayout>
 
@@ -170,12 +173,12 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:paddingEnd="24dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingStart="24dp"
+        android:layout_marginBottom="@dimen/_8dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:paddingEnd="@dimen/_24dp"
+        android:paddingLeft="@dimen/_24dp"
+        android:paddingRight="@dimen/_24dp"
+        android:paddingStart="@dimen/_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

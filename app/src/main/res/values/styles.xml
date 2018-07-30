@@ -8,11 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--Customize your theme here. -->
-        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--Style for the ImageButtons
-        1. Now-->
+    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--Customize your theme here. -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
 </resources>
