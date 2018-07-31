@@ -12,4 +12,7 @@
     <string name="all_tracks">All tracks</string>
     <string name="artist">Artist</string>
     <string name="album">Album</string>
+    <string name="album_artwork">Album artwork</string>
+    <string name="back_nav_icon">Back navigation icon</string>
+    <string name="desc_play_button">Play button</string>
 </resources>

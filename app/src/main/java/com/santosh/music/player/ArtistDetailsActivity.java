@@ -15,6 +15,7 @@ import java.util.Locale;
 public class ArtistDetailsActivity extends AppCompatActivity {
 
     private ImageButton imageButtonPlayAll;
+    private ImageButton imageButtonUp;
     private TextView textViewArtistName;
     private TextView textViewNoOfSongs;
     private ListView listViewSongsList;
@@ -43,10 +44,12 @@ public class ArtistDetailsActivity extends AppCompatActivity {
     }
 
     protected void referenceToIDs() {
-        textViewArtistName = findViewById(R.id.id_aad_artist_name_header);
-        textViewNoOfSongs = findViewById(R.id.id_aad_no_albums_tracks);
-        imageButtonPlayAll = findViewById(R.id.id_aad_play_all);
-        listViewSongsList = findViewById(R.id.id_aad_songs_list);
+        imageButtonUp = findViewById(R.id.ard_back_or_up);
+        textViewArtistName = findViewById(R.id.ard_artist_name);
+        textViewNoOfSongs = findViewById(R.id.ard_tracks_found);
+        imageButtonPlayAll = findViewById(R.id.ard_play_all);
+        imageButtonUp = findViewById(R.id.ard_back_or_up);
+        listViewSongsList = findViewById(R.id.ard_songs_list);
     }
 
     protected void setReceivedIntents() {
@@ -84,6 +87,12 @@ public class ArtistDetailsActivity extends AppCompatActivity {
             }
         });
 
+        imageButtonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ArtistDetailsActivity.this, HomePageActivity.class));
+            }
+        });
         listViewSongsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

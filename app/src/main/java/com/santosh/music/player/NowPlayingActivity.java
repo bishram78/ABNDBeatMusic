@@ -63,7 +63,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         imageButtonMore = findViewById(R.id.id_anp_more);
         textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
         textViewArtistAlbum = findViewById(R.id.id_anp_artist_album);
-        textViewCurrentTime = findViewById(R.id.id_anp_time_skipped);
+        textViewCurrentTime = findViewById(R.id.anp_current_duration);
         textViewTotalDuration = findViewById(R.id.id_anp_time_total);
     }
 

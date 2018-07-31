@@ -7,7 +7,7 @@
     tools:context=".ArtistDetailsActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/id_aad_artist_container"
+        android:id="@+id/ard_artist_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -16,13 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/ard_album_artwork"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop"
             android:src="@drawable/album_art_bm_square_black_text_360"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:0.6"
+            app:layout_constraintDimensionRatio="1:0.9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,40 +33,14 @@
             android:layout_height="0dp"
             android:background="@color/blackTranslucent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:0.6"
+            app:layout_constraintDimensionRatio="1:0.9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/id_aad_artist_name_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/_24dp"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="Name of artist" />
     </android.support.constraint.ConstraintLayout>
 
-    <View
-        android:id="@+id/view_top"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_aad_artist_container" />
-
     <LinearLayout
-        android:id="@+id/id_aad_info_container"
+        android:id="@+id/ard_info_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -75,44 +50,74 @@
         android:paddingRight="@dimen/_24dp"
         android:paddingStart="@dimen/_24dp"
         android:paddingTop="@dimen/_12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ard_artist_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_top">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/id_aad_no_albums_tracks"
+            android:id="@+id/ard_tracks_found"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_12dp"
+            android:layout_marginStart="@dimen/_12dp"
             android:layout_weight="1"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/_18sp"
-            tools:text="92 Tracks" />
+            tools:text="4 Albums | 92 Tracks" />
 
         <ImageButton
-            android:id="@+id/id_aad_play_all"
+            android:id="@+id/ard_play_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_border_bkg_full"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/desc_play_button"
             android:padding="@dimen/_8dp"
-            android:src="@drawable/ic_action_play_black_00" />
+            android:src="@drawable/ic_action_play_white" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/view_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/id_aad_info_container" />
-
     <ListView
-        android:id="@+id/id_aad_songs_list"
+        android:id="@+id/ard_songs_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_bottom" />
+        app:layout_constraintTop_toBottomOf="@id/ard_info_container" />
+
+    <LinearLayout
+        android:id="@+id/ard_up_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/ard_back_or_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:background="@drawable/round_border_bkg_full"
+            android:contentDescription="@string/back_nav_icon"
+            android:src="@drawable/ic_action_back_arrow_white" />
+
+        <TextView
+            android:id="@+id/ard_artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_16dp"
+            android:layout_marginStart="@dimen/_16dp"
+            android:ellipsize="marquee"
+            android:includeFontPadding="false"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            tools:text="Rahat Fateh Ali Khan &amp; Lata Mangeshkar" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

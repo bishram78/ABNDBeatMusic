@@ -15,6 +15,7 @@ import java.util.Locale;
 public class AlbumDetailsActivity extends AppCompatActivity {
 
     private ImageButton imageButtonPlayAll;
+    private ImageButton imageButtonUp;
     private TextView textViewAlbumName;
     private TextView textViewNoOfSong;
     private ListView listViewSongsList;
@@ -43,10 +44,11 @@ public class AlbumDetailsActivity extends AppCompatActivity {
     }
 
     protected void referenceToIDs() {
-        imageButtonPlayAll = findViewById(R.id.id_ad_al_play_all);
-        textViewAlbumName = findViewById(R.id.id_ad_al_album_name);
-        textViewNoOfSong = findViewById(R.id.id_ad_al_no_of_tracks);
-        listViewSongsList = findViewById(R.id.id_ad_al_songs_list);
+        imageButtonPlayAll = findViewById(R.id.ada_play_all);
+        imageButtonUp = findViewById(R.id.ada_back_or_up);
+        textViewAlbumName = findViewById(R.id.ada_album_name);
+        textViewNoOfSong = findViewById(R.id.ada_tracks_found);
+        listViewSongsList = findViewById(R.id.ada_songs_list);
     }
 
     protected void setReceivedIntents() {
@@ -81,6 +83,14 @@ public class AlbumDetailsActivity extends AppCompatActivity {
                 bundle.putStringArrayList(ALBUM_LIST, albumList);
                 bundle.putStringArrayList(DURATION_LIST, durationList);
                 intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        imageButtonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AlbumDetailsActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
