@@ -4,17 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NowPlayingActivity">
+    tools:context=".activities.NowPlayingActivity">
 
     <ImageView
         android:id="@+id/id_anp_album_art"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/_64dp"
-        android:layout_marginLeft="@dimen/_64dp"
-        android:layout_marginRight="@dimen/_64dp"
-        android:layout_marginStart="@dimen/_64dp"
-        android:layout_marginTop="@dimen/_24dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="1:1"
@@ -138,7 +133,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/more_dots" />
+            app:srcCompat="@drawable/ic_action_more_dots" />
 
         <ImageButton
             android:id="@+id/id_anp_fav_heart"
@@ -254,4 +249,47 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_action_next_black" />
     </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/anp_up_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/now_up_bkg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/_8dp"
+        android:paddingEnd="@dimen/_24dp"
+        android:paddingLeft="@dimen/_24dp"
+        android:paddingRight="@dimen/_24dp"
+        android:paddingStart="@dimen/_24dp"
+        android:paddingTop="@dimen/_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/anp_back_or_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_12dp"
+            android:layout_marginTop="@dimen/_12dp"
+            android:background="@drawable/round_border_bkg_full"
+            android:contentDescription="@string/album_artwork"
+            android:src="@drawable/ic_action_back_arrow_white" />
+
+        <TextView
+            android:id="@+id/anp_now_playing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_16dp"
+            android:layout_marginStart="@dimen/_16dp"
+            android:ellipsize="marquee"
+            android:includeFontPadding="false"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            android:text="@string/now_playing" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

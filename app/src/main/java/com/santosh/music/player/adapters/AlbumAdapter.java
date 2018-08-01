@@ -1,4 +1,4 @@
-package com.santosh.music.player;
+package com.santosh.music.player.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.santosh.music.player.R;
+import com.santosh.music.player.models.Album;
 
 import java.util.ArrayList;
 

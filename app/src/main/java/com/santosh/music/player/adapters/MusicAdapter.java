@@ -1,4 +1,4 @@
-package com.santosh.music.player;
+package com.santosh.music.player.adapters;
 
 /*
  * Created by BISHRAM MUNDA
@@ -15,6 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.santosh.music.player.R;
+import com.santosh.music.player.models.Music;
 
 import java.util.ArrayList;
 

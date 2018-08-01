@@ -1,4 +1,4 @@
-package com.santosh.music.player;
+package com.santosh.music.player.models;
 
 public class Album {
 

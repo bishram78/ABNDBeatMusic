@@ -1,4 +1,4 @@
-package com.santosh.music.player;
+package com.santosh.music.player.activities;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.santosh.music.player.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -25,6 +27,7 @@ public class NowPlayingActivity extends AppCompatActivity {
     private TextView textViewNowPlayingTrack;
     private TextView textViewArtistAlbum;
     private TextView textViewCurrentTime;
+    private TextView textViewTimeLeft;
     private TextView textViewTotalDuration;
 
     private ArrayList<String> trackList;
@@ -64,6 +67,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
         textViewArtistAlbum = findViewById(R.id.id_anp_artist_album);
         textViewCurrentTime = findViewById(R.id.anp_current_duration);
+        textViewTimeLeft = findViewById(R.id.anp_left_duration);
         textViewTotalDuration = findViewById(R.id.id_anp_time_total);
     }
 
@@ -93,7 +97,9 @@ public class NowPlayingActivity extends AppCompatActivity {
         }, DELAY_MILLIS);
 
         textViewCurrentTime.setText(R.string.current_time);
+        textViewTimeLeft.setText(String.format("-%s", durationList.get(index)));
         textViewTotalDuration.setText(durationList.get(index));
+
     }
 
     private void setClicksDefault() {
@@ -141,6 +147,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                         }
                     }, DELAY_MILLIS);
 
+                    textViewTimeLeft.setText(String.format("-%s", durationList.get(index)));
                     textViewTotalDuration.setText(durationList.get(index));
                 } else if (index == 0) {
                     Toast.makeText(getApplicationContext(), R.string.the_first_song, Toast.LENGTH_SHORT).show();
@@ -162,6 +169,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                         }
                     }, DELAY_MILLIS);
 
+                    textViewTimeLeft.setText(String.format("-%s", durationList.get(index)));
                     textViewTotalDuration.setText(durationList.get(index));
                 }
             }
@@ -193,6 +201,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                         }
                     }, DELAY_MILLIS);
 
+                    textViewTimeLeft.setText(String.format("-%s", durationList.get(index)));
                     textViewTotalDuration.setText(durationList.get(index));
                 } else if (index == (trackList.size() - 1)) {
                     Toast.makeText(getApplicationContext(), R.string.the_last_song, Toast.LENGTH_SHORT).show();
@@ -214,6 +223,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                         }
                     }, DELAY_MILLIS);
 
+                    textViewTimeLeft.setText(String.format("-%s", durationList.get(index)));
                     textViewTotalDuration.setText(durationList.get(index));
                 }
             }

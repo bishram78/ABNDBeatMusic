@@ -1,4 +1,4 @@
-package com.santosh.music.player;
+package com.santosh.music.player.models;
 
 /**
  * Created by BISHRAM MUNDA
@@ -23,7 +23,14 @@ public class Music {
     /** A private field that holds the DURATION_OF_SONG */
     private String mSongDuration;
 
-    // The constructor of the class (necessary)
+    /**
+     * The constructor of the class with these parameters
+     *
+     * @param songTitle     The title of the track to be shown
+     * @param songArtist    The artist name of the music
+     * @param songAlbum     The album name of the music
+     * @param songDuration  The total duration of the music
+     */
     public Music(String songTitle, String songArtist, String songAlbum, String songDuration) {
         mSongTitle = songTitle;
         mSongArtist = songArtist;

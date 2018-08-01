@@ -1,4 +1,4 @@
-package com.santosh.music.player;
+package com.santosh.music.player.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.santosh.music.player.R;
+import com.santosh.music.player.adapters.MusicAdapter;
+import com.santosh.music.player.models.Music;
 
 import java.util.ArrayList;
 import java.util.Locale;
