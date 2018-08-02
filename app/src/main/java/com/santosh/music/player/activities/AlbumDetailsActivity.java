@@ -94,8 +94,7 @@ public class AlbumDetailsActivity extends AppCompatActivity {
         imageButtonUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AlbumDetailsActivity.this, HomePageActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

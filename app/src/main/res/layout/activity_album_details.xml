@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:contentDescription="@string/album_artwork"
         android:scaleType="centerCrop"
-        android:src="@drawable/album_art_bm_square_black_text_360"
+        android:src="@drawable/album_art_bm"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
             android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/desc_play_button"
             android:padding="@dimen/_8dp"
-            android:src="@drawable/ic_action_play_white" />
+            android:src="@drawable/ic_play_white" />
     </LinearLayout>
 
     <ListView
@@ -91,7 +91,7 @@
             android:layout_marginTop="@dimen/_12dp"
             android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/album_artwork"
-            android:src="@drawable/ic_action_back_arrow_white" />
+            android:src="@drawable/ic_back_arrow_white" />
 
         <TextView
             android:id="@+id/ada_album_name"

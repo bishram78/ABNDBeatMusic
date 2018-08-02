@@ -24,6 +24,7 @@ public class NowPlayingActivity extends AppCompatActivity {
     private ImageButton imageButtonFav;
     private ImageButton imageButtonShare;
     private ImageButton imageButtonMore;
+    private ImageButton imageButtonUp;
     private TextView textViewNowPlayingTrack;
     private TextView textViewArtistAlbum;
     private TextView textViewCurrentTime;
@@ -64,6 +65,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         imageButtonFav = findViewById(R.id.id_anp_fav_heart);
         imageButtonShare = findViewById(R.id.id_anp_share);
         imageButtonMore = findViewById(R.id.id_anp_more);
+        imageButtonUp = findViewById(R.id.anp_back_or_up);
         textViewNowPlayingTrack = findViewById(R.id.id_anp_track);
         textViewArtistAlbum = findViewById(R.id.id_anp_artist_album);
         textViewCurrentTime = findViewById(R.id.anp_current_duration);
@@ -107,12 +109,12 @@ public class NowPlayingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (evenOrOdd.equals("EVEN")) {
-                    imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_play_black));
+                    imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_black));
                     Toast.makeText(getApplicationContext(),
                             String.format(Locale.getDefault(), getString(R.string.song_paused), trackList.get(index)), Toast.LENGTH_SHORT).show();
                     evenOrOdd = "ODD";
                 } else if (evenOrOdd.equals("ODD")) {
-                    imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_pause_black));
+                    imageButtonPlayPause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_black));
                     Toast.makeText(getApplicationContext(),
                             String.format(Locale.getDefault(), getString(R.string.song_playing), trackList.get(index)), Toast.LENGTH_SHORT).show();
                     evenOrOdd = "EVEN";
@@ -229,6 +231,12 @@ public class NowPlayingActivity extends AppCompatActivity {
             }
         });
 
+        imageButtonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         imageButtonRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

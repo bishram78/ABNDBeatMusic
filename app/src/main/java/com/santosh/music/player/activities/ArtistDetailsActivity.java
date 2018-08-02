@@ -94,7 +94,7 @@ public class ArtistDetailsActivity extends AppCompatActivity {
         imageButtonUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ArtistDetailsActivity.this, HomePageActivity.class));
+                finish();
             }
         });
         listViewSongsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

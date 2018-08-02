@@ -54,9 +54,8 @@ public class MusicAdapter extends ArrayAdapter<Music> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //Check if the existing view is being reused, otherwise inflate the view
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_4_song, parent, false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_4_song, parent, false);
         }
 
         // Get the {@link Music} object located at this position in the list
@@ -64,9 +63,9 @@ public class MusicAdapter extends ArrayAdapter<Music> {
 
         // Find the TextViews in the list_item_4_song.xml layout with the IDs id_mli_title,
         // id_mli_artist_album and id_mli_duration
-        TextView textViewTitle = listItemView.findViewById(R.id.id_mli_title);
-        TextView textViewArtistAlbum = listItemView.findViewById(R.id.id_mli_artist_album);
-        TextView textViewDuration = listItemView.findViewById(R.id.id_mli_duration);
+        TextView textViewTitle = convertView.findViewById(R.id.id_mli_title);
+        TextView textViewArtistAlbum = convertView.findViewById(R.id.id_mli_artist_album);
+        TextView textViewDuration = convertView.findViewById(R.id.id_mli_duration);
 
         // Get the Title, Artist, Album and Duration from the current Music object and set the text
         // on the respective textViews
@@ -75,6 +74,6 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         String artist_album = String.format("%s | %s", currentMusic.getSongArtist(), currentMusic.getSongAlbum());
         textViewArtistAlbum.setText(artist_album);
         textViewDuration.setText(currentMusic.getSongDuration());
-        return listItemView;
+        return convertView;
     }
 }

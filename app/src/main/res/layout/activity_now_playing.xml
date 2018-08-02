@@ -18,7 +18,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/album_art_bm_square_black_text_360"
+        app:srcCompat="@drawable/album_art_bm"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
@@ -133,7 +133,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_more_dots" />
+            app:srcCompat="@drawable/more_dots" />
 
         <ImageButton
             android:id="@+id/id_anp_fav_heart"
@@ -150,7 +150,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_action_fav_heart_black" />
+            app:srcCompat="@drawable/ic_fav_hrt_black" />
 
         <ImageButton
             android:id="@+id/id_anp_share"
@@ -167,7 +167,7 @@
             app:layout_constraintStart_toEndOf="@id/id_anp_more"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_action_share_black" />
+            app:srcCompat="@drawable/ic_share_black" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -194,7 +194,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_shuffle_black" />
+            app:srcCompat="@drawable/ic_shuffle_black" />
 
         <ImageButton
             android:id="@+id/id_anp_repeat"
@@ -206,7 +206,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_repeat_black" />
+            app:srcCompat="@drawable/ic_repeat_black" />
 
         <ImageButton
             android:id="@+id/id_anp_play_pause"
@@ -215,7 +215,7 @@
             android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/app_name"
             android:padding="@dimen/_16dp"
-            android:src="@drawable/ic_action_pause_black"
+            android:src="@drawable/ic_pause_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +233,7 @@
             app:layout_constraintHorizontal_bias="0.825"
             app:layout_constraintStart_toEndOf="@id/id_anp_shuffle"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_previous_black" />
+            app:srcCompat="@drawable/ic_previous_black" />
 
         <ImageButton
             android:id="@+id/id_anp_next"
@@ -247,7 +247,7 @@
             app:layout_constraintHorizontal_bias="0.175"
             app:layout_constraintStart_toEndOf="@id/id_anp_play_pause"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_action_next_black" />
+            app:srcCompat="@drawable/ic_next_black" />
     </android.support.constraint.ConstraintLayout>
 
     <LinearLayout
@@ -275,7 +275,7 @@
             android:layout_marginTop="@dimen/_12dp"
             android:background="@drawable/round_border_bkg_full"
             android:contentDescription="@string/album_artwork"
-            android:src="@drawable/ic_action_back_arrow_white" />
+            android:src="@drawable/ic_back_arrow_white" />
 
         <TextView
             android:id="@+id/anp_now_playing"
